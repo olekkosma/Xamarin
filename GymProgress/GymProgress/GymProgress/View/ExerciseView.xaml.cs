@@ -18,5 +18,11 @@ namespace GymProgress.View
 		{
 			InitializeComponent ();
 		}
+
+        private void SearchBar_OnTextChanged(object sender,TextChangedEventArgs e)
+        {
+            var vm = BindingContext as ExerciseViewModel;
+            vm.SearchCommand.Execute(null);
+        }
 	}
 }

@@ -11,10 +11,24 @@
             <Label Text="Exercises"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" />
-            <SearchBar x:Name="ExercisesSearchBar"
+            <StackLayout >
+                <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="65*" />
+                    <ColumnDefinition Width="35*"/>
+                </Grid.ColumnDefinitions>
+                <SearchBar x:Name="ExercisesSearchBar" Grid.Column="0" Grid.Row="0"
                        Text="{Binding Keyword}"
-                       SearchCommand="{Binding SearchCommand}"/>
-
+                       TextChanged="SearchBar_OnTextChanged"
+                           WidthRequest="230"/>
+                
+                <Button Text="Add" Grid.Column="1" Grid.Row="0"
+                        BackgroundColor="SandyBrown"
+                        TextColor="White"
+                        WidthRequest="90"
+                        />
+                </Grid>
+            </StackLayout>
             <ListView x:Name="ExercisesListView"
                       ItemsSource="{Binding Suggestions}"/>
 
