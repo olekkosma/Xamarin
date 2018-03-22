@@ -50,6 +50,8 @@ namespace GymProgress.ViewModel
                 return new Command(Search);
             }
         }
+
+
         public void Search()
         {
             if (_keyword.Length> 0)
@@ -63,6 +65,20 @@ namespace GymProgress.ViewModel
             }
         }
 
+        public Command<string> AddCommand
+        {
+            get
+            {
+                return new Command<string>(Add);
+            }
+        }
+
+        public void Add(string newExercise)
+        {
+            //NEED validation
+            exercises.Add(newExercise);
+
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

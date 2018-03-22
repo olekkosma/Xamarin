@@ -20,12 +20,13 @@
                 <SearchBar x:Name="ExercisesSearchBar" Grid.Column="0" Grid.Row="0"
                        Text="{Binding Keyword}"
                        TextChanged="SearchBar_OnTextChanged"
-                           WidthRequest="230"/>
+                           />
                 
                 <Button Text="Add" Grid.Column="1" Grid.Row="0"
                         BackgroundColor="SandyBrown"
                         TextColor="White"
-                        WidthRequest="90"
+                        Command="{Binding AddCommand}"
+                        CommandParameter="{Binding Text, Source={x:Reference ExercisesSearchBar}}"
                         />
                 </Grid>
             </StackLayout>
