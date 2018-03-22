@@ -31,7 +31,13 @@
                 </Grid>
             </StackLayout>
             <ListView x:Name="ExercisesListView"
-                      ItemsSource="{Binding Suggestions}"/>
+                      ItemsSource="{Binding Suggestions}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
         </StackLayout>
     </ContentPage.Content>

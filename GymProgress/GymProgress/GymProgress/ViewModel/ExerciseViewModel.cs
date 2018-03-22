@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GymProgress.Database;
+using GymProgress.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,15 +12,29 @@ namespace GymProgress.ViewModel
 {
     class ExerciseViewModel : INotifyPropertyChanged
     {
-
+        private static ExerciseDatabase database;
+        public static ExerciseDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new ExerciseDatabase();
+                }
+                return database;
+            }
+        }
         public ExerciseViewModel()
         {
-            Suggestions = exercises;
+            loadList();
+           // Suggestions = database.GetAllExercisesAsync() ;
         }
-        List<string> exercises = new List<string>
+        protected async void loadList()
         {
-            "Bench press","Pull up","Dead lift","Squat","Push up"
-        };
+            Suggestions = await Database.GetAllExercisesAsync();
+            exercises = await Database.GetAllExercisesAsync();
+        }
+        public List<Exercise> exercises;
 
         private string _keyword;
         public string Keyword
@@ -31,9 +47,9 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private List<string> _suggestions = new List<string>();
+        private List<Exercise> _suggestions = new List<Exercise>();
 
-        public List<string> Suggestions
+        public List<Exercise> Suggestions
         {
             get { return _suggestions; }
             set
@@ -56,12 +72,12 @@ namespace GymProgress.ViewModel
         {
             if (_keyword.Length> 0)
             {
-                  Suggestions = exercises.Where(c => c.ToLower().Contains(_keyword.ToLower())).ToList();
+                  Suggestions = exercises.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
 
             }
             else
             {
-                Suggestions = exercises;
+                loadList();
             }
         }
 
@@ -76,7 +92,7 @@ namespace GymProgress.ViewModel
         public void Add(string newExercise)
         {
             //NEED validation
-            exercises.Add(newExercise);
+            exercises.Add(new Exercise { name = newExercise });
 
         }
         public event PropertyChangedEventHandler PropertyChanged;
