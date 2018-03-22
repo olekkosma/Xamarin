@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymProgress.View.ExerciseView"
+             xmlns:vm="clr-namespace:GymProgress.ViewModel">
+    <ContentPage.BindingContext>
+        <vm:ExerciseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Exercises"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" />
+            <SearchBar x:Name="ExercisesSearchBar"
+                       Text="{Binding Keyword}"
+                       SearchCommand="{Binding SearchCommand}"/>
+
+            <ListView x:Name="ExercisesListView"
+                      ItemsSource="{Binding Suggestions}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

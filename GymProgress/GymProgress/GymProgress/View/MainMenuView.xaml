@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:GymProgress"
+             x:Class="GymProgress.MainPage"
+             BackgroundColor="#dadada">
+
+    <StackLayout>
+        <Image Source="logo.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></Image>
+       
+        <Button Text="Exercises"
+                VerticalOptions="Center"
+                Clicked="Exercises_Clicked"
+                HorizontalOptions="Center"></Button>
+    </StackLayout>
+</ContentPage>
