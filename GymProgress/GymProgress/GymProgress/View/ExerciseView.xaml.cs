@@ -32,17 +32,17 @@ namespace GymProgress.View
                 if (width > height)
                 {
                     mainRowGrid.RowDefinitions.Clear();
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10, GridUnitType.Star)});
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(60, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(14, GridUnitType.Star)});
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(16, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Star) });
 
                 }
                 else
                 {
                     mainRowGrid.RowDefinitions.Clear();
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(20, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(84, GridUnitType.Star) });
                 }
             }
         }
