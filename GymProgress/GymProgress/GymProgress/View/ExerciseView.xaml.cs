@@ -1,4 +1,5 @@
-﻿using GymProgress.ViewModel;
+﻿using GymProgress.Model;
+using GymProgress.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,13 @@ namespace GymProgress.View
             var vm = BindingContext as ExerciseViewModel;
             vm.SearchCommand.Execute(null);
         }
-	}
+
+        private void DeleteButton_Clicked(object sender, TextChangedEventArgs e)
+        {
+            var button = sender as Button;
+            var exer = button.BindingContext as Exercise;
+            var vm = BindingContext as ExerciseViewModel;
+            vm.DeleteCommand.Execute(exer);
+        }
+    }
 }

@@ -42,7 +42,8 @@
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
                                     <Label Text="{Binding name}" Grid.Column="0" Grid.Row="0"/>
-                                    <Button Text="-" Grid.Column="1" Grid.Row="0"/>
+                                    <Button Text="-" Grid.Column="1" Grid.Row="0"
+                                            Clicked="DeleteButton_Clicked"/>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>

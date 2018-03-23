@@ -24,27 +24,6 @@ namespace GymProgress.ViewModel
                 return database;
             }
         }
-        public ExerciseViewModel()
-        {
-
-            firstLoad();
-            //Suggestions = exercises.ToList();
-        }
-        private async void loadList()
-        {
-          
-            Suggestions = await Database.GetAllExercisesAsync();
-        }
-        
-        private async void firstLoad()
-        {
-
-            exercises = await Database.GetAllExercisesAsync();
-            Database.LoadSeedIfEmpty(exercises.Count);
-            exercises = await Database.GetAllExercisesAsync();
-            Suggestions = await Database.GetAllExercisesAsync();
-        }
-        public List<Exercise> exercises;
 
         private string _keyword;
         public string Keyword
@@ -58,7 +37,6 @@ namespace GymProgress.ViewModel
         }
 
         private List<Exercise> _suggestions = new List<Exercise>();
-
         public List<Exercise> Suggestions
         {
             get { return _suggestions; }
@@ -69,6 +47,26 @@ namespace GymProgress.ViewModel
             }
         }
 
+        public List<Exercise> exercisesList;
+
+        public ExerciseViewModel()
+        {
+            firstLoad();
+        }
+        private async void firstLoad()
+        {
+            exercisesList = await Database.GetAllExercisesAsync();
+            Database.LoadSeedIfEmpty(exercisesList.Count);
+            exercisesList = await Database.GetAllExercisesAsync();
+            Suggestions = exercisesList.ToList();
+        }
+        private async void UpdateListFromDatabase()
+        {
+
+            exercisesList = await Database.GetAllExercisesAsync();
+            Suggestions = exercisesList.ToList();
+        }
+        
         public Command SearchCommand
         {
             get
@@ -76,21 +74,17 @@ namespace GymProgress.ViewModel
                 return new Command(Search);
             }
         }
-
-
         public void Search()
         {
             if (_keyword.Length> 0)
             {
-                  Suggestions = _suggestions.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
-
+                  Suggestions = exercisesList.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
             }
             else
             {
-                loadList();
+                Suggestions = exercisesList;
             }
         }
-
         public Command<string> AddCommand
         {
             get
@@ -98,13 +92,26 @@ namespace GymProgress.ViewModel
                 return new Command<string>(Add);
             }
         }
-
         public void Add(string newExercise)
         {
             //NEED validation
             Database.SaveExerciseAsync(new Exercise { name = newExercise });
-
+            UpdateListFromDatabase();
         }
+        public Command<Exercise> DeleteCommand
+        {
+            get
+            {
+                return new Command<Exercise>(Delete);
+            }
+        }
+
+        public void Delete(Exercise exerToDelete)
+        {
+            Database.DeleteExerciseAsync(exerToDelete);
+            UpdateListFromDatabase();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
