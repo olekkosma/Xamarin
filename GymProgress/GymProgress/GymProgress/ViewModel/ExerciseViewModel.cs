@@ -58,7 +58,7 @@ namespace GymProgress.ViewModel
             exercisesList = await Database.GetAllExercisesAsync();
             Database.LoadSeedIfEmpty(exercisesList.Count);
             exercisesList = await Database.GetAllExercisesAsync();
-            Suggestions = exercisesList.ToList();
+            Suggestions = await Database.GetAllExercisesAsync();
         }
         private async void UpdateListFromDatabase()
         {
