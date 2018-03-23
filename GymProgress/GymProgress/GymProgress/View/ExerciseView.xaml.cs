@@ -26,12 +26,16 @@ namespace GymProgress.View
             vm.SearchCommand.Execute(null);
         }
 
-        private void DeleteButton_Clicked(object sender, TextChangedEventArgs e)
+        private async void DeleteButton_Clicked(object sender, TextChangedEventArgs e)
         {
-            var button = sender as Button;
-            var exer = button.BindingContext as Exercise;
-            var vm = BindingContext as ExerciseViewModel;
-            vm.DeleteCommand.Execute(exer);
+            var answer = await DisplayAlert("Delete?", "Are you sure you want to delete?", "Yes", "No");
+            if (answer)
+            {
+                var button = sender as Button;
+                var exer = button.BindingContext as Exercise;
+                var vm = BindingContext as ExerciseViewModel;
+                vm.DeleteCommand.Execute(exer);
+            }
         }
     }
 }

@@ -95,8 +95,26 @@ namespace GymProgress.ViewModel
         public void Add(string newExercise)
         {
             //NEED validation
-            Database.SaveExerciseAsync(new Exercise { name = newExercise });
-            UpdateListFromDatabase();
+            if (!IsAlreadyInList(newExercise) && newExercise.Length>=2)
+            {
+                Database.SaveExerciseAsync(new Exercise { name = newExercise });
+                UpdateListFromDatabase();
+            }
+            else
+            {
+               
+            }
+        }
+        public bool IsAlreadyInList(string newExercise)
+        {
+            foreach(Exercise exer in exercisesList)
+            {
+                if (exer.name.ToLower().Equals(newExercise.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         public Command<Exercise> DeleteCommand
         {
