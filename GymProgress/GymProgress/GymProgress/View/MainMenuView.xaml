@@ -8,10 +8,42 @@
     <StackLayout>
         <Image Source="logo.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
         </Image>
-       
+
+        <Button Text="Add training"
+                VerticalOptions="Center"
+                Clicked="Training_Clicked"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                BorderColor="#000000"
+                BorderWidth="2"
+                WidthRequest="200"
+                BackgroundColor="#ebebeb"></Button>
+        <Button Text="My trainings"
+                VerticalOptions="Center"
+                Clicked="TrainingList_Clicked"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                BorderColor="#000000"
+                BorderWidth="2"
+                WidthRequest="200"
+                BackgroundColor="#ebebeb"></Button>
         <Button Text="Exercises"
                 VerticalOptions="Center"
                 Clicked="Exercises_Clicked"
-                HorizontalOptions="Center"></Button>
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                BorderColor="#000000"
+                BorderWidth="2"
+                WidthRequest="200"
+                BackgroundColor="#ebebeb"></Button>
+        <Button Text="Statistics"
+                VerticalOptions="Center"
+                Clicked="Statistics_Clicked"
+                HorizontalOptions="Center"
+                CornerRadius="10"
+                BorderColor="#000000"
+                BorderWidth="2"
+                WidthRequest="200"
+                BackgroundColor="#ebebeb"></Button>
     </StackLayout>
 </ContentPage>

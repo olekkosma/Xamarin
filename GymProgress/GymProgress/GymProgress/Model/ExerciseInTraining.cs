@@ -5,6 +5,7 @@ using System.Text;
 
 namespace GymProgress.Model
 {
+    [Table("ExerciseInTraining")]
     class ExerciseInTraining
     {
         [PrimaryKey, AutoIncrement]
@@ -13,6 +14,7 @@ namespace GymProgress.Model
         public int series { get; set; }
         public int repetition { get; set; }
         public int weight { get; set; }
+        public int TrainingId { get; set; }
 
     }
 }
