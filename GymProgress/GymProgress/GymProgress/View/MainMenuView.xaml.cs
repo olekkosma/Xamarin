@@ -21,6 +21,7 @@ namespace GymProgress
         }
         private async void TrainingList_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new TrainingListView());
         }
 
         private async void Exercises_Clicked(object sender, EventArgs e)

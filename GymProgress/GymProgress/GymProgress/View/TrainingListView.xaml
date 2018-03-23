@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GymProgress.View.TrainingListView" NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="YOUR TRAININGS"
+                VerticalOptions="Start" 
+                HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0" FontSize="35" FontAttributes="Bold"/>
+
+            <ListView x:Name="TrainingListListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Grid HorizontalOptions="FillAndExpand" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90*" />
+                                        <ColumnDefinition Width="10*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="Training" Grid.Column="0" Grid.Row="0"/>
+                                    <Button Text="-" Grid.Column="1" Grid.Row="0"
+                                            Clicked="DeleteButton_Clicked"/>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
