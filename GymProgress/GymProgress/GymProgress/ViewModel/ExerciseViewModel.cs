@@ -26,13 +26,23 @@ namespace GymProgress.ViewModel
         }
         public ExerciseViewModel()
         {
-            loadList();
-           // Suggestions = database.GetAllExercisesAsync() ;
+
+            firstLoad();
+            //Suggestions = exercises.ToList();
         }
-        protected async void loadList()
+        private async void loadList()
         {
+          
             Suggestions = await Database.GetAllExercisesAsync();
+        }
+        
+        private async void firstLoad()
+        {
+
             exercises = await Database.GetAllExercisesAsync();
+            Database.LoadSeedIfEmpty(exercises.Count);
+            exercises = await Database.GetAllExercisesAsync();
+            Suggestions = await Database.GetAllExercisesAsync();
         }
         public List<Exercise> exercises;
 
@@ -72,7 +82,7 @@ namespace GymProgress.ViewModel
         {
             if (_keyword.Length> 0)
             {
-                  Suggestions = exercises.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
+                  Suggestions = _suggestions.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
 
             }
             else
@@ -92,7 +102,7 @@ namespace GymProgress.ViewModel
         public void Add(string newExercise)
         {
             //NEED validation
-            exercises.Add(new Exercise { name = newExercise });
+            Database.SaveExerciseAsync(new Exercise { name = newExercise });
 
         }
         public event PropertyChangedEventHandler PropertyChanged;

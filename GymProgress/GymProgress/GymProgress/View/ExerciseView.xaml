@@ -34,7 +34,11 @@
                       ItemsSource="{Binding Suggestions}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding name}"/>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding name}"/>
+                            </StackLayout>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
