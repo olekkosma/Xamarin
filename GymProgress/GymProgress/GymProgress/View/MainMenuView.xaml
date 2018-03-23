@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:GymProgress"
              x:Class="GymProgress.MainPage"
-             BackgroundColor="#dadada">
+             BackgroundColor="#dadada" NavigationPage.HasNavigationBar="false">
 
     <StackLayout>
-        <Image Source="logo.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="Start"></Image>
+        <Image Source="logo.jpg" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+        </Image>
        
         <Button Text="Exercises"
                 VerticalOptions="Center"

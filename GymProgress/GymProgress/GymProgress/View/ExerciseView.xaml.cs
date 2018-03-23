@@ -19,6 +19,33 @@ namespace GymProgress.View
 		{
 			InitializeComponent ();
 		}
+        private double width;
+        private double height;
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    mainRowGrid.RowDefinitions.Clear();
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10, GridUnitType.Star)});
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(30, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(60, GridUnitType.Star) });
+
+                }
+                else
+                {
+                    mainRowGrid.RowDefinitions.Clear();
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(10, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(20, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Star) });
+                }
+            }
+        }
 
         private void SearchBar_OnTextChanged(object sender,TextChangedEventArgs e)
         {

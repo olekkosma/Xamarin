@@ -13,8 +13,10 @@ namespace GymProgress
 		public MainPage()
 		{
 			InitializeComponent();
-		}
-
+           
+        }
+       
+      
         private async void Exercises_Clicked(object sender , EventArgs e)
         {
             await Navigation.PushAsync(new ExerciseView());
