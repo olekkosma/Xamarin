@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GymProgress.View.TrainingView" NavigationPage.HasNavigationBar="false">
+             x:Class="GymProgress.View.TrainingView"
+             xmlns:vm="clr-namespace:GymProgress.ViewModel" NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <vm:ExerciseInTrainingViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
@@ -25,8 +29,25 @@
             <StackLayout>
                 <Button Text="Select exercise"
                         Clicked="AddExer_Clicked"/>
-                <ListView>
-                    
+                <ListView x:Name="ExercisesListView"
+                      ItemsSource="{Binding Exercises}" Grid.Column="0" Grid.Row="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal">
+                                    <Grid HorizontalOptions="FillAndExpand" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="90*" />
+                                            <ColumnDefinition Width="10*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Text="{Binding Exercisee.name}" Grid.Column="0" Grid.Row="0"/>
+                                        <Button Text="-" Grid.Column="1" Grid.Row="0"
+                                           Clicked="DeleteButton_Clicked"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
         </StackLayout>
