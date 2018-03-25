@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,6 +11,7 @@ namespace GymProgress.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        [ManyToOne]
         public Exercise exercise { get; set; }
         public int series { get; set; }
         public int repetition { get; set; }

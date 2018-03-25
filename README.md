@@ -23,3 +23,4 @@ More details in documentation >> pdf
 -by dodac jakies pliki(zdjecia) w androidzie trzeba wrzucic go do drawable, a w UWP bezposrednio w roocie...  
 -by pozbyc sie navi baru trzeba w kazdym XAML dodaæ w Content page odpowiedni kod.  
 -By wiedziec czy jesteœmy w horizontal czy w portrait nale¿y w widoku dodaæ metode, która  sprawdza czy szerokoœæ jest wiêksza od wysokoœci, i wtedy zmieniæ odpowiednio UI  
+- by korzystaæ z pe³nej bazy danych samo sqlite-net pcl nie wystarczy trzeba miec wersje extension
