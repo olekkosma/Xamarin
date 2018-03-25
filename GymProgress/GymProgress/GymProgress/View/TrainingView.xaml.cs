@@ -16,5 +16,10 @@ namespace GymProgress.View
 		{
 			InitializeComponent ();
 		}
-	}
+
+        private async void AddExer_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddExericeView());
+        }
+    }
 }

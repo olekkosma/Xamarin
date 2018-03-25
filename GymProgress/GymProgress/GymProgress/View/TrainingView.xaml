@@ -5,18 +5,11 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Label Text="ADD TRAINING"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Button Text="Save training"/>
+                <Button Text="Save training"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -27,15 +20,15 @@
                 <Entry Grid.Row="0" Grid.Column="1"/>
                 <Label Text="Date" Grid.Row="1" Grid.Column="0"/>
                 <Entry Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Select exercise" Grid.Row="2" Grid.Column="0"/>
-                <Entry Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Series" Grid.Row="3" Grid.Column="0"/>
-                <Entry Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Repetition" Grid.Row="4" Grid.Column="0"/>
-                <Entry Grid.Row="4" Grid.Column="1"/>
-                <Label Text="Weight" Grid.Row="5" Grid.Column="0"/>
-                <Entry Grid.Row="5" Grid.Column="1"/>
+                
             </Grid>
+            <StackLayout>
+                <Button Text="Select exercise"
+                        Clicked="AddExer_Clicked"/>
+                <ListView>
+                    
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

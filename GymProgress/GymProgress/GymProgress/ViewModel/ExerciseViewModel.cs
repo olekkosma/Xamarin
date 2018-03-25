@@ -51,9 +51,9 @@ namespace GymProgress.ViewModel
 
         public ExerciseViewModel()
         {
-            firstLoad();
+            FirstLoad();
         }
-        private async void firstLoad()
+        private async void FirstLoad()
         {
             exercisesList = await Database.GetAllExercisesAsync();
             Database.LoadSeedIfEmpty(exercisesList.Count);

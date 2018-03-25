@@ -12,11 +12,10 @@ namespace GymProgress.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [ManyToOne]
-        public Exercise exercise { get; set; }
-        public int series { get; set; }
-        public int repetition { get; set; }
-        public int weight { get; set; }
-        public int TrainingId { get; set; }
+        public Exercise Exercise { get; set; }
+        public int Series { get; set; }
+        public int Repetition { get; set; }
+        public int Weight { get; set; }
 
     }
 }
