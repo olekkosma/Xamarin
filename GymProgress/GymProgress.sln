@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymProgress.Android", "GymP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymProgress.UWP", "GymProgress\GymProgress.UWP\GymProgress.UWP.csproj", "{3ED1052A-CBB1-4475-870F-E7A843E745E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GymProgress", "GymProgress\GymProgress\GymProgress.csproj", "{5CB21A9B-018F-49B8-9120-C882A27769A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymProgress", "GymProgress\GymProgress\GymProgress.csproj", "{5CB21A9B-018F-49B8-9120-C882A27769A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -46,6 +46,8 @@ Global
 		{CA745FBD-A600-44D4-B998-DEBB0C2D20B8}.Release|x86.Build.0 = Release|Any CPU
 		{CA745FBD-A600-44D4-B998-DEBB0C2D20B8}.Release|x86.Deploy.0 = Release|Any CPU
 		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|Any CPU.Build.0 = Debug|x86
+		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|Any CPU.Deploy.0 = Debug|x86
 		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|ARM.ActiveCfg = Debug|ARM
 		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|ARM.Build.0 = Debug|ARM
 		{3ED1052A-CBB1-4475-870F-E7A843E745E9}.Debug|ARM.Deploy.0 = Debug|ARM

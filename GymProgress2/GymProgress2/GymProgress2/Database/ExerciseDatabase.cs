@@ -1,4 +1,4 @@
-﻿using GymProgress.Model;
+﻿using GymProgress2.Model;
 using SQLite;
 using SQLiteNetExtensionsAsync.Extensions;
 using System;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace GymProgress.Database
+namespace GymProgress2.Database
 {
     class ExerciseDatabase
     {
@@ -18,23 +18,24 @@ namespace GymProgress.Database
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
             database.CreateTableAsync<Exercise>();
             database.CreateTableAsync<ExerciseInTraining>();
-            Seed();
+            //Seed();
         }
 
-        public void Seed()
+
+        public Task Seed()
         {
             Exercise exer = new Exercise { name = "Testowane cwiczenie" };
-            database.InsertAsync(exer);
+             database.InsertAsync(exer);
             ExerciseInTraining exerInTrain = new ExerciseInTraining { Series = 5, Repetition = 5, Weight = 10 };
-            database.InsertAsync(exerInTrain);
+             database.InsertAsync(exerInTrain);
             exer.ExerInTraining = new List<ExerciseInTraining> { exerInTrain };
-            database.UpdateWithChildrenAsync(exer);
-            database.InsertAsync(new Exercise { name = "Bench press" });
-            database.InsertAsync(new Exercise { name = "Push up" });
-            database.InsertAsync(new Exercise { name = "Pull up" });
-            database.InsertAsync(new Exercise { name = "Inverted row" });
-            database.InsertAsync(new Exercise { name = "Cable fly" });
-            database.InsertAsync(new Exercise { name = "Bulgarian split squat" });
+            return database.UpdateWithChildrenAsync(exer);
+            //database.InsertAsync(new Exercise { name = "Bench press" });
+            //database.InsertAsync(new Exercise { name = "Push up" });
+            //database.InsertAsync(new Exercise { name = "Pull up" });
+            //database.InsertAsync(new Exercise { name = "Inverted row" });
+           //database.InsertAsync(new Exercise { name = "Cable fly" });
+           // database.InsertAsync(new Exercise { name = "Bulgarian split squat" });
         }
         public void LoadSeedIfEmpty(int size)
         {
@@ -52,7 +53,7 @@ namespace GymProgress.Database
 
         public Task<List<Exercise>> GetAllExercisesAsync()
         {
-            return database.GetAllWithChildrenAsync<Exercise>();
+            return database.Table<Exercise>().ToListAsync();
         }
         public Task<int> DeleteExerciseAsync(Exercise exer)
         {

@@ -43,19 +43,6 @@ namespace GymProgress.ViewModel
         private async void FirstLoad()
         {
             Exercises = await Database.GetAllExercisesInTrainingsAsync();
-           /* Exercises = new List<ExerciseInTraining> { new ExerciseInTraining
-            {
-                Weight=12,
-                Series=5,
-                Exercisee = new Exercise{name="nowe cwiczenie"},
-            },
-             new ExerciseInTraining
-            {
-                Weight=12,
-                Series=5,
-                Exercisee = new Exercise{name="drugie nowe cwiczenie"},
-            }
-            };*/
         }
 
         private async void UpdateListFromDatabase()

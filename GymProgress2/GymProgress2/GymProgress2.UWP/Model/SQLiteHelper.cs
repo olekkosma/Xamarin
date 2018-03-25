@@ -1,19 +1,18 @@
-﻿using System;
+﻿using GymProgress2.Model;
+using GymProgress2.UWP.Model;
+using SQLite;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
-using GymProgress.UWP.Model;
-using GymProgress.Model;
-using Xamarin.Forms;
-using SQLite;
 
 [assembly: Xamarin.Forms.Dependency(typeof(SQLiteHelper))]
-namespace GymProgress.UWP.Model
+namespace GymProgress2.UWP.Model
 {
+   
     public class SQLiteHelper : ISQLiteHelper
     {
         public SQLiteHelper() { }

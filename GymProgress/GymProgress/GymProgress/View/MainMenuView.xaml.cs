@@ -1,4 +1,5 @@
-﻿using GymProgress.View;
+﻿using GymProgress.Database;
+using GymProgress.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace GymProgress
         public MainPage()
         {
             InitializeComponent();
-
+            
         }
 
         private async void Training_Clicked(object sender, EventArgs e)
