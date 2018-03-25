@@ -9,16 +9,16 @@ using Xamarin.Forms;
 
 namespace GymProgress.Database
 {
-    class ExerciseDatabase
+    class GymDatabase
     {
         readonly SQLiteAsyncConnection database;
         List<Exercise> tmp = new List<Exercise>();
-        public ExerciseDatabase()
+        public GymDatabase()
         {
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
             database.CreateTableAsync<Exercise>();
             database.CreateTableAsync<ExerciseInTraining>();
-            Seed();
+            database.CreateTableAsync<Training>();
         }
 
         public void Seed()
@@ -44,9 +44,8 @@ namespace GymProgress.Database
             }
         }
 
-        public Task<List<ExerciseInTraining>> GetAllExercisesInTrainingsAsync()
+        public Task<List<ExerciseInTraining>> GetAllExercisesInTrainingAsync()
         {
-            //return database.Table<ExerciseInTraining>().ToListAsync();
             return database.GetAllWithChildrenAsync<ExerciseInTraining>();
         }
 
@@ -64,15 +63,28 @@ namespace GymProgress.Database
             return database.DeleteAsync(exerInTraining);
         }
 
-        public Task<int> SaveExerciseAsync(Exercise exer)
+
+        public Task SaveExerciseAsync(Exercise exer)
         {
             if (exer.Id != 0)
             {
-                return database.UpdateAsync(exer);
+                return database.UpdateWithChildrenAsync(exer);
             }
             else
             {
-                return database.InsertAsync(exer);
+                return database.InsertWithChildrenAsync(exer);
+            }
+        }
+
+        public Task SaveExerciseInTrainingAsync(ExerciseInTraining exerInTraining)
+        {
+            if (exerInTraining.Id != 0)
+            {
+                return database.UpdateWithChildrenAsync(exerInTraining);
+            }
+            else
+            {
+                return database.InsertWithChildrenAsync(exerInTraining);
             }
         }
 
@@ -82,6 +94,26 @@ namespace GymProgress.Database
             foreach (Exercise exer in tmp)
             {
                 DeleteExerciseAsync(exer);
+            }
+        }
+
+        public void DeleteAllExercisesInTraining(List<ExerciseInTraining> tmp)
+        {
+            foreach (ExerciseInTraining exer in tmp)
+            {
+                DeleteExerciseInTrainingAsync(exer);
+            }
+        }
+
+        public Task SaveTrainingAsync(Training training)
+        {
+            if (training.Id != 0)
+            {
+                return database.UpdateWithChildrenAsync(training);
+            }
+            else
+            {
+                return database.InsertWithChildrenAsync(training);
             }
         }
 

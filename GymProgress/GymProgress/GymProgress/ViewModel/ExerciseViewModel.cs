@@ -12,14 +12,14 @@ namespace GymProgress.ViewModel
 {
     class ExerciseViewModel : INotifyPropertyChanged
     {
-        private static ExerciseDatabase database;
-        public static ExerciseDatabase Database
+        private static GymDatabase database;
+        public static GymDatabase Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new ExerciseDatabase();
+                    database = new GymDatabase();
                 }
                 return database;
             }

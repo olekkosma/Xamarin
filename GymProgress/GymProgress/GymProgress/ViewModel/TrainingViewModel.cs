@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
-    class ExerciseInTrainingViewModel : INotifyPropertyChanged
+    class TrainingViewModel
     {
         private static GymDatabase database;
         public static GymDatabase Database
@@ -24,29 +24,56 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private Exercise _exercise;
-        public Exercise Exercise
+        private List<ExerciseInTraining> _exercises = new List<ExerciseInTraining>();
+        public List<ExerciseInTraining> Exercises
         {
-            get { return _exercise; }
+            get { return _exercises; }
             set
             {
-                _exercise = value;
+                _exercises = value;
                 OnPropertyChanged();
             }
         }
 
-        public ExerciseInTrainingViewModel()
+        private string _description;
+        public string Descritpion
         {
-            FirstLoad();
+            get { return _description; }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
         }
 
-        private async void FirstLoad()
+        public Command<string> AddCommand
         {
-            Exercises = await Database.GetAllExercisesInTrainingAsync();
+            get
+            {
+                return new Command<string>(Add);
+            }
+        }
+        public void Add(string newExercise)
+        {
+            //NEED validation
+                Database.SaveTrainingAsync(new Training { description = Descritpion });
+                UpdateListFromDatabase();
+        }
+
+        private DateTime _date;
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged();
+            }
         }
 
         private async void UpdateListFromDatabase()
         {
+
             Exercises = await Database.GetAllExercisesInTrainingAsync();
         }
 
@@ -63,6 +90,7 @@ namespace GymProgress.ViewModel
             Database.DeleteExerciseInTrainingAsync(exerToDelete);
             UpdateListFromDatabase();
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
