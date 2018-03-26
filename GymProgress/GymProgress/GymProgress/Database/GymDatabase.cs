@@ -12,7 +12,6 @@ namespace GymProgress.Database
     public class GymDatabase
     {
         readonly SQLiteAsyncConnection database;
-        List<Exercise> tmp = new List<Exercise>();
         public GymDatabase()
         {
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
@@ -23,18 +22,18 @@ namespace GymProgress.Database
 
         public void Seed()
         {
-            Exercise exer = new Exercise { name = "Testowane cwiczenie" };
+            Exercise exer = new Exercise { Name = "Testowane cwiczenie" };
             database.InsertAsync(exer);
             ExerciseInTraining exerInTrain = new ExerciseInTraining { Series = 5, Repetition = 5, Weight = 10 };
             database.InsertAsync(exerInTrain);
             exer.ExerInTraining = new List<ExerciseInTraining> { exerInTrain };
             database.UpdateWithChildrenAsync(exer);
-            database.InsertAsync(new Exercise { name = "Bench press" });
-            database.InsertAsync(new Exercise { name = "Push up" });
-            database.InsertAsync(new Exercise { name = "Pull up" });
-            database.InsertAsync(new Exercise { name = "Inverted row" });
-            database.InsertAsync(new Exercise { name = "Cable fly" });
-            database.InsertAsync(new Exercise { name = "Bulgarian split squat" });
+            database.InsertAsync(new Exercise { Name = "Bench press" });
+            database.InsertAsync(new Exercise { Name = "Push up" });
+            database.InsertAsync(new Exercise { Name = "Pull up" });
+            database.InsertAsync(new Exercise { Name = "Inverted row" });
+            database.InsertAsync(new Exercise { Name = "Cable fly" });
+            database.InsertAsync(new Exercise { Name = "Bulgarian split squat" });
         }
         public void LoadSeedIfEmpty(int size)
         {

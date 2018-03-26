@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GymProgress.ViewModel
 {
-    class MainMenuViewModel
+    class MainMenuViewModel : BasicViewModel
     {
     }
 }

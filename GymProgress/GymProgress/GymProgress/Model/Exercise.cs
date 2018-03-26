@@ -11,7 +11,7 @@ namespace GymProgress.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
         [OneToMany(CascadeOperations = CascadeOperation.CascadeRead | CascadeOperation.CascadeInsert)]
         public List<ExerciseInTraining> ExerInTraining { get; set; }
     }

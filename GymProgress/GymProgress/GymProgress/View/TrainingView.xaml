@@ -40,9 +40,8 @@
                                             <ColumnDefinition Width="90*" />
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Exercisee.name}" Grid.Column="0" Grid.Row="0"/>
-                                        <Button Text="-" Grid.Column="1" Grid.Row="0"
-                                           />
+                                        <Label Text="{Binding Exercisee.Name}" FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                                        <Button Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell>

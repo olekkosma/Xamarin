@@ -9,21 +9,8 @@ using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
-    public class ExerciseInTrainingViewModel : INotifyPropertyChanged
+    public class ExerciseInTrainingViewModel : BasicViewModel
     {
-        private static GymDatabase database;
-        public static GymDatabase Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new GymDatabase();
-                }
-                return database;
-            }
-        }
-
         private Exercise _exercise;
         public Exercise Exercise
         {
@@ -83,12 +70,6 @@ namespace GymProgress.ViewModel
         {
             //NEED validation
             Database.SaveExerciseInTrainingAsync(new ExerciseInTraining { Series=Series,Repetition=Repetition,Weight=Weight,Exercisee=Exercise});
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

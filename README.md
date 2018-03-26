@@ -33,3 +33,5 @@ More details in documentation >> pdf
 * -UWP ma problem z SQL, z jakiegoœ powodu  rz¹da innej paczki. Roziwazanie to prze³¹czenie na realese.  
   
 * -By przekazaæ wartoœæ z jednego viewmodelu Do drugiego, przesy³am w konstruktorze syna, jako parametr viewModel ojca. W metodzie syna przypisuje odpowiedni¹ wartoœæviewmodelu ojca  
+  
+* -chcê korzystaæ z Command i bandingowania go, ale wiekszoœæ akcji powoduje zmiane aktualnego view, tzn Pop, albo Push. Nie jestem wstanie teg ozrobiæ z poziomu ModelView. muszê delegowaæ najpierw z Widoku, a z widoku Command w ViewModel  

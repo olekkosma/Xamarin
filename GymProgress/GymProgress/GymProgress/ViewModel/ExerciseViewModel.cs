@@ -10,20 +10,8 @@ using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
-    class ExerciseViewModel : INotifyPropertyChanged
+    class ExerciseViewModel : BasicViewModel
     {
-        private static GymDatabase database;
-        public static GymDatabase Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new GymDatabase();
-                }
-                return database;
-            }
-        }
 
         private string _keyword;
         public string Keyword
@@ -78,7 +66,7 @@ namespace GymProgress.ViewModel
         {
             if (_keyword.Length> 0)
             {
-                  Suggestions = exercisesList.Where(c => c.name.ToLower().Contains(_keyword.ToLower())).ToList();
+                  Suggestions = exercisesList.Where(c => c.Name.ToLower().Contains(_keyword.ToLower())).ToList();
             }
             else
             {
@@ -97,7 +85,7 @@ namespace GymProgress.ViewModel
             //NEED validation
             if (!IsAlreadyInList(newExercise) && newExercise.Length>=2)
             {
-                Database.SaveExerciseAsync(new Exercise { name = newExercise });
+                Database.SaveExerciseAsync(new Exercise { Name = newExercise });
                 UpdateListFromDatabase();
             }
             else
@@ -109,7 +97,7 @@ namespace GymProgress.ViewModel
         {
             foreach(Exercise exer in exercisesList)
             {
-                if (exer.name.ToLower().Equals(newExercise.ToLower()))
+                if (exer.Name.ToLower().Equals(newExercise.ToLower()))
                 {
                     return true;
                 }
@@ -128,12 +116,6 @@ namespace GymProgress.ViewModel
         {
             Database.DeleteExerciseAsync(exerToDelete);
             UpdateListFromDatabase();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -31,6 +31,12 @@ namespace GymProgress.View
             await Navigation.PushAsync(new ExerciseView(true, vm));
         }
 
+        private void AddExerciseInTraining_Clicked(object sender, EventArgs e)
+        {
+            var vm = BindingContext as ExerciseInTrainingViewModel;
+            vm.AddCommand.Execute(null);
+            Navigation.PopAsync(); ;
+        }
 
     }
 }

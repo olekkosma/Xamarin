@@ -9,20 +9,8 @@ using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
-    class TrainingViewModel
+    class TrainingViewModel : BasicViewModel
     {
-        private static GymDatabase database;
-        public static GymDatabase Database
-        {
-            get
-            {
-                if (database == null)
-                {
-                    database = new GymDatabase();
-                }
-                return database;
-            }
-        }
 
         private List<ExerciseInTraining> _exercises = new List<ExerciseInTraining>();
         public List<ExerciseInTraining> Exercises
@@ -57,6 +45,26 @@ namespace GymProgress.ViewModel
             }
         }
 
+        private List<string> _exercisesString = new List<string>();
+
+        public List<string> ExercisesString
+        {
+            get { return _exercisesString; }
+            set
+            {
+                _exercisesString = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public TrainingViewModel()
+        {
+            UpdateListFromDatabase();
+            //foreach (ExerciseInTraining exer in Exercises)
+           // {
+           //     ExercisesString.Add(string.Format("\b{0} \n Series: {1}  Repetition: {2}  Weight: {3}", exer.Exercisee.Name, exer.Series, exer.Repetition, exer.Weight));
+           // }
+        }
 
         public Command AddCommand
         {
@@ -71,11 +79,7 @@ namespace GymProgress.ViewModel
                 Database.SaveTrainingAsync(new Training { Description = Descritpion ,Date=Date,Exercises=Exercises});
                 UpdateListFromDatabase();
         }
-
-        public TrainingViewModel()
-        {
-            UpdateListFromDatabase();
-        }
+        
         private async void UpdateListFromDatabase()
         {
             Exercises = await Database.GetAllExercisesInTrainingAsync();
@@ -93,13 +97,6 @@ namespace GymProgress.ViewModel
         {
             Database.DeleteExerciseInTrainingAsync(exerToDelete);
             UpdateListFromDatabase();
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
