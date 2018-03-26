@@ -19,5 +19,13 @@ namespace GymProgress.Model
         [ManyToOne]
         public Exercise Exercisee { get; set; }
 
+        public   string Print()
+        {
+            return string.Format("{0} \n Series: {1}  Repetition: {2}  Weight: {3}", this.Exercisee.Name, this.Series, this.Repetition, this.Weight);
+        }
+        public string MyText
+        {
+            get { return Print(); }
+        }
     }
 }

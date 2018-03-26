@@ -3,6 +3,7 @@ using GymProgress.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
@@ -60,10 +61,6 @@ namespace GymProgress.ViewModel
         public TrainingViewModel()
         {
             UpdateListFromDatabase();
-            //foreach (ExerciseInTraining exer in Exercises)
-           // {
-           //     ExercisesString.Add(string.Format("\b{0} \n Series: {1}  Repetition: {2}  Weight: {3}", exer.Exercisee.Name, exer.Series, exer.Repetition, exer.Weight));
-           // }
         }
 
         public Command AddCommand
