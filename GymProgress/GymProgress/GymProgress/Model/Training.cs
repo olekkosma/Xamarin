@@ -13,6 +13,7 @@ namespace GymProgress.Model
         public int Id { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        public List<ExerciseInTraining> Exercises { get; set; }
+        [OneToMany]
+        public List<ExerciseInTraining> ExercisesInTraining { get; set; }
     }
 }

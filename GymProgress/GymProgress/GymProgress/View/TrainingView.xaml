@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Button Text="Save training"/>
+                <Button Text="Save training" Clicked="AddTraining_Clicked"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
                 <Label Text="Description" Grid.Row="0" Grid.Column="0"/>
                 <Entry Grid.Row="0" Grid.Column="1"/>
                 <Label Text="Date" Grid.Row="1" Grid.Column="0"/>
-                <Entry Grid.Row="1" Grid.Column="1"/>
+                <DatePicker  Grid.Row="1" Grid.Column="1"/>
                 
             </Grid>
             <StackLayout>

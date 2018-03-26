@@ -1,14 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GymProgress.View.TrainingListView" NavigationPage.HasNavigationBar="false">
+             x:Class="GymProgress.View.TrainingListView"
+              xmlns:vm="clr-namespace:GymProgress.ViewModel" NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <vm:TrainingListViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <Label Text="YOUR TRAININGS"
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0" FontSize="35" FontAttributes="Bold"/>
 
-            <ListView x:Name="TrainingListListView">
+            <ListView x:Name="TrainingListListView" ItemsSource="{Binding Trainings}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -18,7 +22,7 @@
                                         <ColumnDefinition Width="90*" />
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="Training" Grid.Column="0" Grid.Row="0"/>
+                                    <Label Text="{Binding Description}" Grid.Column="0" Grid.Row="0"/>
                                     <Button Text="-" Grid.Column="1" Grid.Row="0"
                                             Clicked="DeleteButton_Clicked"/>
                                 </Grid>

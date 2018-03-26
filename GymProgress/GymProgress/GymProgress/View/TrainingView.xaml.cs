@@ -35,6 +35,18 @@ namespace GymProgress.View
                 vm.DeleteCommand.Execute(exer);
             }
         }
+        private void AddTraining_Clicked(object sender, EventArgs e)
+        {
+            var vm = BindingContext as TrainingViewModel;
+            vm.AddCommand.Execute(null);
+            Navigation.PopAsync(); ;
+        }
+
+        protected override void OnAppearing()
+        {
+            var vm = BindingContext as TrainingViewModel;
+            vm.UpdateListFromDatabase();
+        }
 
 
     }

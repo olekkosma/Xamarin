@@ -73,11 +73,11 @@ namespace GymProgress.ViewModel
         public void Add()
         {
             //NEED validation
-                Database.SaveTrainingAsync(new Training { Description = Descritpion ,Date=Date,Exercises=Exercises});
+                Database.SaveTrainingAsync(new Training { Description = Descritpion ,Date=Date,ExercisesInTraining=Exercises});
                 UpdateListFromDatabase();
         }
         
-        private async void UpdateListFromDatabase()
+        public async void UpdateListFromDatabase()
         {
             Exercises = await Database.GetAllExercisesInTrainingAsync();
         }

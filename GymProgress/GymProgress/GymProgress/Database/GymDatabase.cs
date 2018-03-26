@@ -31,6 +31,15 @@ namespace GymProgress.Database
             database.InsertAsync(exerInTrain);
             exer.ExerInTraining = new List<ExerciseInTraining> { exerInTrain };
             database.UpdateWithChildrenAsync(exer);
+            Training training = new Training
+            {
+                Description = "Nie bylo latwo",
+                Date = new DateTime(2017, 11, 12),
+            };
+            database.InsertAsync(training);
+            training.ExercisesInTraining = new List<ExerciseInTraining> { exerInTrain };
+            database.UpdateWithChildrenAsync(training);
+
             database.InsertAsync(new Exercise { Name = "Bench press" });
             database.InsertAsync(new Exercise { Name = "Push up" });
             database.InsertAsync(new Exercise { Name = "Pull up" });
@@ -46,6 +55,11 @@ namespace GymProgress.Database
             }
         }
 
+
+        public Task<List<Training>> GetAllTrainingsAsync()
+        {
+            return database.GetAllWithChildrenAsync<Training>();
+        }
         public Task<List<ExerciseInTraining>> GetAllExercisesInTrainingAsync()
         {
             return database.GetAllWithChildrenAsync<ExerciseInTraining>();
