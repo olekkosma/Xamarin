@@ -4,7 +4,7 @@
              x:Class="GymProgress.View.TrainingView"
              xmlns:vm="clr-namespace:GymProgress.ViewModel" NavigationPage.HasNavigationBar="false">
     <ContentPage.BindingContext>
-        <vm:ExerciseInTrainingViewModel/>
+        <vm:TrainingViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
@@ -42,7 +42,7 @@
                                         </Grid.ColumnDefinitions>
                                         <Label Text="{Binding Exercisee.name}" Grid.Column="0" Grid.Row="0"/>
                                         <Button Text="-" Grid.Column="1" Grid.Row="0"
-                                           Clicked="DeleteButton_Clicked"/>
+                                           />
                                     </Grid>
                                 </StackLayout>
                             </ViewCell>

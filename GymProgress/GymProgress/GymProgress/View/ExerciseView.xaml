@@ -38,7 +38,7 @@
                     </Grid>
                 </StackLayout>
                 <ListView x:Name="ExercisesListView"
-                      ItemsSource="{Binding Suggestions}" Grid.Column="0" Grid.Row="2">
+                      ItemsSource="{Binding Suggestions}" Grid.Column="0" Grid.Row="2" ItemTapped="ExerciseChoossed_Clicked">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

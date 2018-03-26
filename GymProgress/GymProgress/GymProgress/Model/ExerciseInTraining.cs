@@ -7,7 +7,7 @@ using System.Text;
 namespace GymProgress.Model
 {
     [Table("ExerciseInTraining")]
-    class ExerciseInTraining
+    public class ExerciseInTraining
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }

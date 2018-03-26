@@ -1,5 +1,6 @@
 ﻿using GymProgress.Model;
 using GymProgress.ViewModel;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,19 @@ namespace GymProgress.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ExerciseView : ContentPage
 	{
-        
-		public ExerciseView ()
+        bool IsComingFromTrainingSession = false;
+        ExerciseInTrainingViewModel Vm;
+        public ExerciseView ()
 		{
 			InitializeComponent ();
 		}
+        public ExerciseView(bool value, ExerciseInTrainingViewModel vm)
+        {
+            InitializeComponent();
+            IsComingFromTrainingSession = value;
+            Vm = vm;
+
+        }
         private double width;
         private double height;
 
@@ -51,6 +60,18 @@ namespace GymProgress.View
         {
             var vm = BindingContext as ExerciseViewModel;
             vm.SearchCommand.Execute(null);
+        }
+
+        private void ExerciseChoossed_Clicked(object sender, ItemTappedEventArgs e)
+        {
+            if (IsComingFromTrainingSession)
+            {
+                IsComingFromTrainingSession = false;
+                var exer = e.Item as Exercise;
+                Vm.Exercise = exer;
+                Navigation.PopAsync();
+            }
+            
         }
 
         private async void DeleteButton_Clicked(object sender, TextChangedEventArgs e)

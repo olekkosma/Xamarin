@@ -24,16 +24,6 @@ namespace GymProgress.View
             await Navigation.PushAsync(new AddExericeView());
         }
 
-        private async void DeleteButton_Clicked(object sender, TextChangedEventArgs e)
-        {
-            var answer = await DisplayAlert("Delete?", "Are you sure you want to delete?", "Yes", "No");
-            if (answer)
-            {
-                var button = sender as Button;
-                var exer = button.BindingContext as ExerciseInTraining;
-                var vm = BindingContext as ExerciseInTrainingViewModel;
-                vm.DeleteCommand.Execute(exer);
-            }
-        }
+        
     }
 }

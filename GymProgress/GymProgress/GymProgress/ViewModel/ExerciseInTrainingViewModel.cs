@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
-    class ExerciseInTrainingViewModel : INotifyPropertyChanged
+    public class ExerciseInTrainingViewModel : INotifyPropertyChanged
     {
         private static GymDatabase database;
         public static GymDatabase Database
@@ -35,33 +35,54 @@ namespace GymProgress.ViewModel
             }
         }
 
-        public ExerciseInTrainingViewModel()
+        private int _series;
+        public int Series
         {
-            FirstLoad();
-        }
-
-        private async void FirstLoad()
-        {
-            Exercises = await Database.GetAllExercisesInTrainingAsync();
-        }
-
-        private async void UpdateListFromDatabase()
-        {
-            Exercises = await Database.GetAllExercisesInTrainingAsync();
-        }
-
-        public Command<ExerciseInTraining> DeleteCommand
-        {
-            get
+            get { return _series; }
+            set
             {
-                return new Command<ExerciseInTraining>(Delete);
+                _series = value;
+                OnPropertyChanged();
             }
         }
 
-        public void Delete(ExerciseInTraining exerToDelete)
+        private int _repetition;
+        public int Repetition
         {
-            Database.DeleteExerciseInTrainingAsync(exerToDelete);
-            UpdateListFromDatabase();
+            get { return _repetition; }
+            set
+            {
+                _repetition = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _weight;
+        public int Weight
+        {
+            get { return _weight; }
+            set
+            {
+                _weight = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ExerciseInTrainingViewModel()
+        {
+        }
+
+        public Command AddCommand
+        {
+            get
+            {
+                return new Command(Add);
+            }
+        }
+        public void Add()
+        {
+            //NEED validation
+            Database.SaveExerciseInTrainingAsync(new ExerciseInTraining { Series=Series,Repetition=Repetition,Weight=Weight,Exercisee=Exercise});
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

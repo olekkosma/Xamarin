@@ -46,20 +46,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        public Command<string> AddCommand
-        {
-            get
-            {
-                return new Command<string>(Add);
-            }
-        }
-        public void Add(string newExercise)
-        {
-            //NEED validation
-                Database.SaveTrainingAsync(new Training { description = Descritpion });
-                UpdateListFromDatabase();
-        }
-
         private DateTime _date;
         public DateTime Date
         {
@@ -71,9 +57,27 @@ namespace GymProgress.ViewModel
             }
         }
 
+
+        public Command AddCommand
+        {
+            get
+            {
+                return new Command(Add);
+            }
+        }
+        public void Add()
+        {
+            //NEED validation
+                Database.SaveTrainingAsync(new Training { Description = Descritpion ,Date=Date,Exercises=Exercises});
+                UpdateListFromDatabase();
+        }
+
+        public TrainingViewModel()
+        {
+            UpdateListFromDatabase();
+        }
         private async void UpdateListFromDatabase()
         {
-
             Exercises = await Database.GetAllExercisesInTrainingAsync();
         }
 

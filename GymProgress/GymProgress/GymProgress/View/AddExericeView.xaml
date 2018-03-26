@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GymProgress.View.AddExericeView">
+             x:Class="GymProgress.View.AddExericeView"
+             xmlns:vm="clr-namespace:GymProgress.ViewModel" NavigationPage.HasNavigationBar="false">
+    <ContentPage.BindingContext>
+        <vm:ExerciseInTrainingViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
@@ -20,17 +24,17 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Select exercise" Grid.Row="0" Grid.Column="0"/>
-                <Entry Grid.Row="0" Grid.Column="1"/>
+                <Button Text="Select exercise" Grid.Row="0" Grid.Column="0" Clicked="SelectExercise_Clicked"/>
+                <Entry Text="{Binding Exercise.name}" Grid.Row="0" Grid.Column="1"/>
                 <Label Text="Series" Grid.Row="1" Grid.Column="0"/>
-                <Entry Grid.Row="1" Grid.Column="1"/>
+                <Entry Text="{Binding Series}" Grid.Row="1" Grid.Column="1"/>
                 <Label Text="Repetition" Grid.Row="2" Grid.Column="0"/>
-                <Entry Grid.Row="2" Grid.Column="1"/>
+                <Entry Text="{Binding Repetition}" Grid.Row="2" Grid.Column="1"/>
                 <Label Text="Weight" Grid.Row="3" Grid.Column="0"/>
-                <Entry Grid.Row="3" Grid.Column="1"/>
+                <Entry Text="{Binding Weight}"  Grid.Row="3" Grid.Column="1"/>
             </Grid>
             <StackLayout>
-                <Button Text="add exercise"/>
+                <Button Text="add exercise" Command="{Binding AddCommand}" />
             </StackLayout>
 
         </StackLayout>

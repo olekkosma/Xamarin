@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace GymProgress.Database
 {
-    class GymDatabase
+    public class GymDatabase
     {
         readonly SQLiteAsyncConnection database;
         List<Exercise> tmp = new List<Exercise>();

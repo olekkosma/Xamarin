@@ -7,12 +7,12 @@ using System.Text;
 namespace GymProgress.Model
 {
     [Table("Training")]
-    class Training
+    public class Training
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string description { get; set; }
-        public DateTime date { get; set; }
-        public List<ExerciseInTraining> exercises { get; set; }
+        public string Description { get; set; }
+        public DateTime Date { get; set; }
+        public List<ExerciseInTraining> Exercises { get; set; }
     }
 }
