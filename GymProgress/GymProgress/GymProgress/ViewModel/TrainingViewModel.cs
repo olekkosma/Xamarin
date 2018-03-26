@@ -61,6 +61,8 @@ namespace GymProgress.ViewModel
         public TrainingViewModel()
         {
             UpdateListFromDatabase();
+            Descritpion = "- no desc -";
+            Date = DateTime.Now;
         }
 
         public Command AddCommand

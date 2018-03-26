@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GymProgress.Model;
+using GymProgress.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,9 @@ namespace GymProgress.View
             if (answer)
             {
                 var button = sender as Button;
+                var exer = button.BindingContext as Training;
+                var vm = BindingContext as TrainingListViewModel;
+                vm.DeleteCommand.Execute(exer);
             }
         }
     }

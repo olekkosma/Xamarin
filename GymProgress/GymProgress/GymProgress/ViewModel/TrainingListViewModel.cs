@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xamarin.Forms;
 
 namespace GymProgress.ViewModel
 {
@@ -20,6 +21,20 @@ namespace GymProgress.ViewModel
 
         public TrainingListViewModel()
         {
+            UpdateListFromDatabase();
+        }
+
+        public Command<Training> DeleteCommand
+        {
+            get
+            {
+                return new Command<Training>(Delete);
+            }
+        }
+
+        public void Delete(Training exerToDelete)
+        {
+            Database.DeleteTrainingAsync(exerToDelete);
             UpdateListFromDatabase();
         }
 

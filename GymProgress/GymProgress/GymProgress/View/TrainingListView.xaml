@@ -22,8 +22,12 @@
                                         <ColumnDefinition Width="90*" />
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
-                                    <Label Text="{Binding Description}" Grid.Column="0" Grid.Row="0"/>
-                                    <Button Text="-" Grid.Column="1" Grid.Row="0"
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding Description}" Grid.Column="0" Grid.Row="0"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:d MMMM yyyy}'}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="End"
+                                               Grid.Column="0" Grid.Row="0"/>
+                                    </StackLayout>
+                            <Button Text="-" Grid.Column="1" Grid.Row="0"
                                             Clicked="DeleteButton_Clicked"/>
                                 </Grid>
                             </StackLayout>

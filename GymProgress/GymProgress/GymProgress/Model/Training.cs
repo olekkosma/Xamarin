@@ -15,5 +15,6 @@ namespace GymProgress.Model
         public DateTime Date { get; set; }
         [OneToMany]
         public List<ExerciseInTraining> ExercisesInTraining { get; set; }
+
     }
 }
