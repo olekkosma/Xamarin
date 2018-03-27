@@ -11,7 +11,8 @@ namespace GymProgress.ViewModel
         private List<Training> _trainings = new List<Training>();
         public List<Training> Trainings
         {
-            get { return _trainings; }
+            get {
+                return _trainings; }
             set
             {
                 _trainings = value;

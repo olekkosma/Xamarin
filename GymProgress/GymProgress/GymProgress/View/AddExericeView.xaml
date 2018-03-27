@@ -10,10 +10,10 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout  HorizontalOptions="FillAndExpand" >
-                <Button Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Button BackgroundColor="#1976d2" Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
                 <Label x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                 <Label Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                       FontSize="25" FontAttributes="Bold"  TextColor="#4477ee"/>
+                       FontSize="25" FontAttributes="Bold"  TextColor="#ffffff"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>

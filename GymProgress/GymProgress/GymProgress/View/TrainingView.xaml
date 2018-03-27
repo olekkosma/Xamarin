@@ -33,20 +33,21 @@
             </Grid>
             <StackLayout>
                 <Button Text="Select exercise"
-                        Clicked="AddExer_Clicked" BackgroundColor="#77aa99"/>
-                <ListView x:Name="ExercisesListView"
+                        Clicked="AddExer_Clicked" BackgroundColor="#1976d2"/>
+                <ListView x:Name="ExercisesListView"  HasUnevenRows="True" 
                       ItemsSource="{Binding Exercises}" Grid.Column="0" Grid.Row="2">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" BackgroundColor="#eeeeee" Margin="2,5,2,5">
                                     <Grid HorizontalOptions="FillAndExpand" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="90*" />
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding ExerInTrainingExtended}" FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
-                                        <Button Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked" BackgroundColor="#FF5522"/>
+                                        <Label Text="{Binding ExerInTrainingExtended}" TextColor="Black" 
+                                               FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                                        <Button  BackgroundColor="#FF5522" Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked" />
                                     </Grid>
                                 </StackLayout>
                             </ViewCell>

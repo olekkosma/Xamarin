@@ -18,7 +18,7 @@ namespace GymProgress.View
         private List<Entry> entries = new List<Entry>();
         public void loadTrainings()
         {
-            var vm = BindingContext as TrainingListViewModel;
+            var vm = new TrainingListViewModel();
             var trainings = vm.Trainings;
             List<Training> trainingsSorted = trainings.OrderBy(o => o.Date).ToList();
             Random random = new Random();
