@@ -27,7 +27,6 @@ namespace GymProgress.ViewModel
 
         public async void UpdateList()
         {
-            //UpdateListFromDatabase();
             _trainings = await Database.GetAllTrainingsAsync();
             foreach (Training training in _trainings)
             {
@@ -65,7 +64,6 @@ namespace GymProgress.ViewModel
                 }
             }
             if(loadTwice) Trainings = await Database.GetAllTrainingsAsync();
-            
         }
     }
 }
