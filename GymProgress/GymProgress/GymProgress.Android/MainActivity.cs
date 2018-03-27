@@ -9,7 +9,8 @@ using Android.OS;
 using Xamarin.Forms;
 namespace GymProgress.Droid
 {
-    [Activity(Label = "GymProgress", Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    //ScreenOrientation = ScreenOrientation.Portrait
+    [Activity(Label = "GymProgress", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

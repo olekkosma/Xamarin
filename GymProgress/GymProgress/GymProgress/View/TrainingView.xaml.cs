@@ -50,9 +50,20 @@ namespace GymProgress.View
         }
         private void AddTraining_Clicked(object sender, EventArgs e)
         {
+
             var vm = BindingContext as TrainingViewModel;
-            vm.AddCommand.Execute(null);
-            Navigation.PopAsync();
+
+            if (DateTime.Compare(vm.Date, DateTime.Now) > 0)
+            {
+                DateErrorLabel.Text = "Date is from the future!Wrong!";
+
+            }
+            else
+            {
+                DateErrorLabel.Text = "";
+                vm.AddCommand.Execute(null);
+                Navigation.PopAsync();
+            }
         }
         protected override void OnAppearing()
         {

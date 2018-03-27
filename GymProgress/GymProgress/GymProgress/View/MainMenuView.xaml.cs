@@ -32,6 +32,7 @@ namespace GymProgress
         }
         private async void Statistics_Clicked(object sender, EventArgs e)
         {
+            await Navigation.PushAsync(new StatisticView());
         }
     }
 }

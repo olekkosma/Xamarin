@@ -21,8 +21,9 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
                 <Label Text="Description: " Grid.Row="0" Grid.Column="0"/>
-                <Entry Text="{Binding Descritpion}" Grid.Row="0" Grid.Column="1"/>
+                <Entry  Text="{Binding Descritpion}" Grid.Row="0" Grid.Column="1"/>
                 <Label Text="Date" Grid.Row="1" Grid.Column="0"/>
+                <Label x:Name="DateErrorLabel" Text="EEE" Grid.Row="1" Grid.Column="0"/>
                 <DatePicker Date="{Binding Date}" Grid.Row="1" Grid.Column="1"/>
                 
             </Grid>

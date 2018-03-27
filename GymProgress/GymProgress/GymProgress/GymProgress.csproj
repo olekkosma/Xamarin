@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microcharts" Version="0.7.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
     <PackageReference Include="SQLiteNetExtensions" Version="2.0.0" />
     <PackageReference Include="SQLiteNetExtensions.Async" Version="2.0.0" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
@@ -24,6 +26,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ExerciseView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\StatisticView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\TrainingListView.xaml">
