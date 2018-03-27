@@ -9,13 +9,17 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <StackLayout>
-                <Button Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <StackLayout  HorizontalOptions="FillAndExpand" >
+                <Button Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Label x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                 <Label Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
-                       FontSize="21" FontAttributes="Bold" />
+                       FontSize="25" FontAttributes="Bold"  TextColor="#4477ee"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -25,15 +29,19 @@
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Text="Series" Grid.Row="2" Grid.Column="0"/>
-                <Entry Text="{Binding Series}" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Repetition" Grid.Row="3" Grid.Column="0"/>
+
+                <Label x:Name="SeriesErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15"/>
+                <Label Text="Series:" Grid.Row="1" Grid.Column="0" FontSize="20" TextColor="Black"/>
+                <Entry Text="{Binding Series}" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="RepetitionErrorLabel" Text="" Grid.Row="2" Grid.Column="1" TextColor="Red" FontSize="15"/>
+                <Label Text="Repetition:" Grid.Row="3" Grid.Column="0" FontSize="20" TextColor="Black"/>
                 <Entry Text="{Binding Repetition}" Grid.Row="3" Grid.Column="1"/>
-                <Label Text="Weight" Grid.Row="4" Grid.Column="0"/>
-                <Entry Text="{Binding Weight}"  Grid.Row="4" Grid.Column="1"/>
+                <Label x:Name="WeightErrorLabel" Text="" Grid.Row="4" Grid.Column="1" TextColor="Red" FontSize="15"/>
+                <Label Text="Weight:" Grid.Row="5" Grid.Column="0" FontSize="20" TextColor="Black"/>
+                <Entry Text="{Binding Weight}"  Grid.Row="5" Grid.Column="1"/>
             </Grid>
             <StackLayout>
-                <Button Text="Add exercise" Clicked="AddExerciseInTraining_Clicked" />
+                <Button Text="Add exercise" Clicked="AddExerciseInTraining_Clicked" BackgroundColor="Gold" />
             </StackLayout>
 
         </StackLayout>

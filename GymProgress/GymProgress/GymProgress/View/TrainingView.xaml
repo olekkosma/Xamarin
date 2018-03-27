@@ -10,27 +10,30 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Button Text="Save training" Clicked="AddTraining_Clicked"/>
+                <Button Text="Save training" Clicked="AddTraining_Clicked" BackgroundColor="Gold"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="Description: " Grid.Row="0" Grid.Column="0"/>
-                <Entry  Text="{Binding Descritpion}" Grid.Row="0" Grid.Column="1"/>
-                <Label Text="Date" Grid.Row="1" Grid.Column="0"/>
-                <Label x:Name="DateErrorLabel" Text="EEE" Grid.Row="1" Grid.Column="0"/>
-                <DatePicker Date="{Binding Date}" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="DescriptionErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15"/>
+                <Label Text="Description: " Grid.Row="1" Grid.Column="0" FontSize="20" TextColor="Black"/>
+                <Entry  Text="{Binding Descritpion}" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="DateErrorLabel" Text="" Grid.Row="2" Grid.Column="1" TextColor="Red"  FontSize="15"/>
+                <Label Text="Date:" Grid.Row="3" Grid.Column="0" FontSize="20" TextColor="Black"/>
+                <DatePicker Date="{Binding Date}" Grid.Row="3" Grid.Column="1"/>
                 
             </Grid>
             <StackLayout>
                 <Button Text="Select exercise"
-                        Clicked="AddExer_Clicked"/>
+                        Clicked="AddExer_Clicked" BackgroundColor="#77aa99"/>
                 <ListView x:Name="ExercisesListView"
                       ItemsSource="{Binding Exercises}" Grid.Column="0" Grid.Row="2">
                     <ListView.ItemTemplate>
@@ -43,7 +46,7 @@
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label Text="{Binding ExerInTrainingExtended}" FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
-                                        <Button Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked"/>
+                                        <Button Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked" BackgroundColor="#FF5522"/>
                                     </Grid>
                                 </StackLayout>
                             </ViewCell>

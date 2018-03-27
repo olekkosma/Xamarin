@@ -24,12 +24,12 @@
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding DescExtended}" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"  VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding DescExtended}"  TextColor="#112244" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"  VerticalTextAlignment="Center"/>
                                         <Label Text="{Binding Date, StringFormat='{0:d MMMM yyyy}'}" FontSize="20" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End"
-                                               Grid.Column="0" Grid.Row="0"/>
+                                               Grid.Column="0" Grid.Row="0" TextColor="Black"/>
                                     </StackLayout>
                             <Button Text="-" Grid.Column="1" Grid.Row="0"
-                                            Clicked="DeleteButton_Clicked"/>
+                                            Clicked="DeleteButton_Clicked" BackgroundColor="#FF5522"/>
                                 </Grid>
                             </StackLayout>
                         </ViewCell>

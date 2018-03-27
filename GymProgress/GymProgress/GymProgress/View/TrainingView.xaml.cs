@@ -56,13 +56,21 @@ namespace GymProgress.View
             if (DateTime.Compare(vm.Date, DateTime.Now) > 0)
             {
                 DateErrorLabel.Text = "Date is from the future!Wrong!";
-
             }
             else
             {
                 DateErrorLabel.Text = "";
-                vm.AddCommand.Execute(null);
-                Navigation.PopAsync();
+                if (vm.Descritpion.Length > 20)
+                {
+                    DescriptionErrorLabel.Text = "Description is too long!Wrong!";
+                }
+                else
+                {
+                    
+                    DescriptionErrorLabel.Text = "";
+                    vm.AddCommand.Execute(null);
+                    Navigation.PopAsync();
+                }
             }
         }
         protected override void OnAppearing()

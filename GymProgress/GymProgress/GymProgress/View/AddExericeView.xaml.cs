@@ -29,6 +29,7 @@ namespace GymProgress.View
         {
             InitializeComponent();
             var vm = BindingContext as ExerciseInTrainingViewModel;
+
             vm.Exercise = exer;
         }
 
@@ -41,10 +42,40 @@ namespace GymProgress.View
         private void AddExerciseInTraining_Clicked(object sender, EventArgs e)
         {
             var vm = BindingContext as ExerciseInTrainingViewModel;
-            
-            vm.AddCommand.Execute(null);
-            Navigation.PopAsync();
+            if (vm.Exercise == null)
+            {
+                ExerciseErrorLabel.Text = "Select exercise!Wrong!";
+            }
+            else
+            {
+                ExerciseErrorLabel.Text = "";
+                if (vm.Series <= 0)
+                {
+                    SeriesErrorLabel.Text = "Series value need to be positive!Wrong!";
+                }
+                else
+                {
+                    SeriesErrorLabel.Text = "";
+                    if (vm.Repetition <= 0)
+                    {
+                        RepetitionErrorLabel.Text = " Repetition value need to be positive!Wrong!";
+                    }
+                    else
+                    {
+                        RepetitionErrorLabel.Text = "";
+                        if (vm.Weight < 0)
+                        {
+                            WeightErrorLabel.Text = " Weight value need to be  not negative!Wrong!";
+                        }
+                        else
+                        {
+                            WeightErrorLabel.Text = "";
+                            vm.AddCommand.Execute(null);
+                            Navigation.PopAsync();
+                        }
+                    }
+                }
+            }
         }
-
     }
 }
