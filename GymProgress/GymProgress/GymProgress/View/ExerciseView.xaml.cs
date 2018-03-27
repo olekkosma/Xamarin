@@ -36,8 +36,31 @@ namespace GymProgress.View
         {
             var vm = BindingContext as ExerciseViewModel;
             vm.SearchCommand.Execute(null);
-        }
+            var searchBar = sender as SearchBar;
 
+            string newExer = searchBar.Text;
+            List<Exercise> list = vm.exercisesList;
+            if (newExer.Length < 2  || IsAlreadyDefined(list,newExer))
+            {
+                AddButton.IsEnabled = false;
+            }
+            else
+            {
+                AddButton.IsEnabled = true;
+            }
+        }
+        public bool IsAlreadyDefined(List<Exercise> list,string newExer)
+        {
+            foreach(Exercise exer in list)
+            {
+                if (exer.Name.ToLower().Equals(newExer.ToLower()))
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
         private void ExerciseChoossed_Clicked(object sender, ItemTappedEventArgs e)
         {
             if (IsComingFromTrainingSession)
@@ -60,6 +83,13 @@ namespace GymProgress.View
                 vm.DeleteCommand.Execute(exer);
             }
         }
+
+        private void AddButton_Clicked(object sender, TextChangedEventArgs e)
+        {
+            var vm = BindingContext as ExerciseViewModel;
+            vm.AddCommand.Execute(ExercisesSearchBar.Text);
+        }
+
         protected override void OnSizeAllocated(double width, double height)  // when screen is rotated, no acces via xaml
         {
             base.OnSizeAllocated(width, height);

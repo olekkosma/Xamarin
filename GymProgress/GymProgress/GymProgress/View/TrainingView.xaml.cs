@@ -28,7 +28,7 @@ namespace GymProgress.View
             InitializeComponent();
             vm = BindingContext as TrainingViewModel;
             vm.Training = training;
-            
+
         }
 
         private async void AddExer_Clicked(object sender, EventArgs e)
@@ -54,13 +54,10 @@ namespace GymProgress.View
             vm.AddCommand.Execute(null);
             Navigation.PopAsync();
         }
-
         protected override void OnAppearing()
         {
             var vm = BindingContext as TrainingViewModel;
             vm.UpdateListFromDatabase();
         }
-
-
     }
 }

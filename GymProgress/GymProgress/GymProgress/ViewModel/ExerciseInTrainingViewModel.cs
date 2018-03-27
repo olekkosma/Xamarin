@@ -12,6 +12,11 @@ namespace GymProgress.ViewModel
     public class ExerciseInTrainingViewModel : BasicViewModel
     {
         private Exercise _exercise;
+        private Training _training;
+        private int _series;
+        private int _repetition;
+        private int _weight;
+
         public Exercise Exercise
         {
             get { return _exercise; }
@@ -22,7 +27,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private Training _training;
         public Training Training
         {
             get { return _training; }
@@ -33,7 +37,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private int _series;
         public int Series
         {
             get { return _series; }
@@ -44,7 +47,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private int _repetition;
         public int Repetition
         {
             get { return _repetition; }
@@ -55,7 +57,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private int _weight;
         public int Weight
         {
             get { return _weight; }
@@ -66,10 +67,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        public ExerciseInTrainingViewModel()
-        {
-        }
-
         public Command AddCommand
         {
             get
@@ -77,11 +74,11 @@ namespace GymProgress.ViewModel
                 return new Command(Add);
             }
         }
+
         public void Add()
         {
             //NEED validation
             ExerciseInTraining exer = new ExerciseInTraining { Series = Series, Repetition = Repetition, Weight = Weight, Exercisee = Exercise, Training = Training };
-          
             Database.SaveExerciseInTrainingAsync(exer);
             Training.ExercisesInTraining.Add(exer);
             Database.SaveTrainingAsync(Training);
