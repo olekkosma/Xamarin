@@ -22,6 +22,18 @@ namespace GymProgress.ViewModel
         public TrainingListViewModel()
         {
             UpdateListFromDatabase();
+            UpdateList();
+        }
+
+        public async void UpdateList()
+        {
+            foreach (Training training in _trainings)
+            {
+                foreach (ExerciseInTraining exerInTraining in training.ExercisesInTraining)
+                {
+                    exerInTraining.Exercisee = await Database.GetExerForExerInTrainingAsync(exerInTraining.ExerciseId);
+                }
+            }
         }
 
         public Command<Training> DeleteCommand

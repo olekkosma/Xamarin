@@ -30,5 +30,13 @@ namespace GymProgress.View
                 vm.DeleteCommand.Execute(exer);
             }
         }
+
+        private void EditTraining_Clicked(object sender, ItemTappedEventArgs e)
+        {
+                var training = e.Item as Training;
+           // TrainingListViewModel vm = BindingContext as TrainingListViewModel;
+            Navigation.PushAsync(new TrainingView(training));
+
+        }
     }
 }

@@ -15,9 +15,9 @@ namespace GymProgress.Database
         public GymDatabase()
         {
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
-            //database.DropTableAsync<Training>();
-            //database.DropTableAsync<ExerciseInTraining>();
-            //database.DropTableAsync<Exercise>();
+            database.DropTableAsync<Training>();
+            database.DropTableAsync<ExerciseInTraining>();
+            database.DropTableAsync<Exercise>();
             database.CreateTableAsync<Exercise>();
             database.CreateTableAsync<ExerciseInTraining>();
             database.CreateTableAsync<Training>();
@@ -26,26 +26,34 @@ namespace GymProgress.Database
         public void Seed()
         {
             Exercise exer = new Exercise { Name = "Testowane cwiczenie" };
+            Exercise exer2 = new Exercise { Name = "Bench press" };
             database.InsertAsync(exer);
+            database.InsertAsync(exer2);
             ExerciseInTraining exerInTrain = new ExerciseInTraining { Series = 5, Repetition = 5, Weight = 10 };
+            ExerciseInTraining exerInTrain2 = new ExerciseInTraining { Series = 50, Repetition = 50, Weight = 100 };
             database.InsertAsync(exerInTrain);
+            database.InsertAsync(exerInTrain2);
             exer.ExerInTraining = new List<ExerciseInTraining> { exerInTrain };
+
+            exer2.ExerInTraining = new List<ExerciseInTraining> { exerInTrain2 };
             database.UpdateWithChildrenAsync(exer);
+            database.UpdateWithChildrenAsync(exer2);
             Training training = new Training
             {
                 Description = "Nie bylo latwo",
                 Date = new DateTime(2017, 11, 12),
             };
             database.InsertAsync(training);
-            training.ExercisesInTraining = new List<ExerciseInTraining> { exerInTrain };
+            training.ExercisesInTraining = new List<ExerciseInTraining> { exerInTrain,exerInTrain2 };
+            exerInTrain.Training = training;
+            exerInTrain2.Training = training;
             database.UpdateWithChildrenAsync(training);
+            database.UpdateWithChildrenAsync(exerInTrain);
+            database.UpdateWithChildrenAsync(exerInTrain2);
 
-            database.InsertAsync(new Exercise { Name = "Bench press" });
             database.InsertAsync(new Exercise { Name = "Push up" });
             database.InsertAsync(new Exercise { Name = "Pull up" });
             database.InsertAsync(new Exercise { Name = "Inverted row" });
-            database.InsertAsync(new Exercise { Name = "Cable fly" });
-            database.InsertAsync(new Exercise { Name = "Bulgarian split squat" });
         }
         public void LoadSeedIfEmpty(int size)
         {
@@ -56,6 +64,10 @@ namespace GymProgress.Database
         }
 
 
+        public async Task<Exercise> GetExerForExerInTrainingAsync(int id)
+        {
+            return await database.GetWithChildrenAsync<Exercise>(id);
+        }
         public Task<List<Training>> GetAllTrainingsAsync()
         {
             return database.GetAllWithChildrenAsync<Training>();

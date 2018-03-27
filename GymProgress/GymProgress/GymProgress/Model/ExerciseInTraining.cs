@@ -18,14 +18,14 @@ namespace GymProgress.Model
         public int Series { get; set; }
         public int Repetition { get; set; }
         public int Weight { get; set; }
-        [ManyToOne]
+        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Exercise Exercisee { get; set; }
-        [ManyToOne]
+        [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Training Training { get; set; }
 
         public   string Print()
         {
-            return string.Format("{0} \n Series: {1}  Repetition: {2}  Weight: {3}", this.Exercisee.Name, this.Series, this.Repetition, this.Weight);
+            return string.Format("{0} TrainingID: {1} ownId: {2} \n Series: {3}  Repetition: {4}  Weight: {5}", this.Exercisee.Name,this.TrainingId,this.Id, this.Series, this.Repetition, this.Weight);
         }
         public string MyText
         {

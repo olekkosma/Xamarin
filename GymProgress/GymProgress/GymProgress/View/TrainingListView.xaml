@@ -12,7 +12,7 @@
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0" FontSize="35" FontAttributes="Bold"/>
 
-            <ListView x:Name="TrainingListListView" ItemsSource="{Binding Trainings}">
+            <ListView x:Name="TrainingListListView" ItemsSource="{Binding Trainings}" ItemTapped="EditTraining_Clicked" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -23,6 +23,7 @@
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                        <Label Text="{Binding ExercisesInTraining.Count}" Grid.Column="0" Grid.Row="0"/>
                                         <Label Text="{Binding Description}" Grid.Column="0" Grid.Row="0"/>
                                         <Label Text="{Binding Date, StringFormat='{0:d MMMM yyyy}'}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="End"
                                                Grid.Column="0" Grid.Row="0"/>

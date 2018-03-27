@@ -13,7 +13,7 @@ namespace GymProgress.Model
         public int Id { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        [OneToMany]
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeRead)]
         public List<ExerciseInTraining> ExercisesInTraining { get; set; }
 
     }

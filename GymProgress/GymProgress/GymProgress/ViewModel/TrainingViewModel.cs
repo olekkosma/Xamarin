@@ -12,6 +12,30 @@ namespace GymProgress.ViewModel
 {
     class TrainingViewModel : BasicViewModel
     {
+        private Training _training;
+
+        public Training Training
+        {
+            get { return _training; }
+            set
+            {
+                _training = value;
+                Descritpion = value.Description;
+                Date = value.Date;
+                UpdateList(value);
+                Exercises = value.ExercisesInTraining;
+                //Exercises = new List<ExerciseInTraining>();
+                OnPropertyChanged();
+            }
+        }
+
+        public async void UpdateList(Training training)
+        {
+                foreach (ExerciseInTraining exerInTraining in training.ExercisesInTraining)
+                {
+                    exerInTraining.Exercisee = await Database.GetExerForExerInTrainingAsync(exerInTraining.ExerciseId);
+                }
+        }
 
         private List<ExerciseInTraining> _exercises = new List<ExerciseInTraining>();
         public List<ExerciseInTraining> Exercises
@@ -46,23 +70,12 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private List<string> _exercisesString = new List<string>();
-
-        public List<string> ExercisesString
-        {
-            get { return _exercisesString; }
-            set
-            {
-                _exercisesString = value;
-                OnPropertyChanged();
-            }
-        }
-
         public TrainingViewModel()
         {
-            UpdateListFromDatabase();
-            Descritpion = "- no desc -";
-            Date = DateTime.Now;
+                //UpdateListFromDatabase();
+                Descritpion = "- no desc -";
+                Date = DateTime.Now;
+            Exercises = new List<ExerciseInTraining>();
         }
 
         public Command AddCommand
@@ -74,8 +87,18 @@ namespace GymProgress.ViewModel
         }
         public void Add()
         {
-            //NEED validation
-                Database.SaveTrainingAsync(new Training { Description = Descritpion ,Date=Date,ExercisesInTraining=Exercises});
+            if (_training == null)
+            {
+                //NEED validation
+                Database.SaveTrainingAsync(new Training { Description = Descritpion, Date = Date, ExercisesInTraining = Exercises });
+            }
+            else
+            {
+                _training.Description = Descritpion;
+                _training.Date = Date;
+                _training.ExercisesInTraining = Exercises;
+                Database.SaveTrainingAsync(_training);
+            }
                 UpdateListFromDatabase();
         }
         

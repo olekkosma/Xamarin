@@ -11,13 +11,22 @@ using Xamarin.Forms.Xaml;
 
 namespace GymProgress.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TrainingView : ContentPage
-	{
-		public TrainingView ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class TrainingView : ContentPage
+    {
+        TrainingViewModel vm;
+
+        public TrainingView()
+        {
+            InitializeComponent();
+        }
+
+        public TrainingView(Training training)
+        {
+            InitializeComponent();
+            vm = BindingContext as TrainingViewModel;
+            vm.Training = training;
+        }
 
         private async void AddExer_Clicked(object sender, EventArgs e)
         {
@@ -39,13 +48,13 @@ namespace GymProgress.View
         {
             var vm = BindingContext as TrainingViewModel;
             vm.AddCommand.Execute(null);
-            Navigation.PopAsync(); ;
+            Navigation.PopAsync();
         }
 
         protected override void OnAppearing()
         {
-            var vm = BindingContext as TrainingViewModel;
-            vm.UpdateListFromDatabase();
+         //   var vm = BindingContext as TrainingViewModel;
+          //  vm.UpdateListFromDatabase();
         }
 
 
