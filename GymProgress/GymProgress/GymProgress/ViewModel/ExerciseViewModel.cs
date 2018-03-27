@@ -12,8 +12,9 @@ namespace GymProgress.ViewModel
 {
     class ExerciseViewModel : BasicViewModel
     {
-
         private string _keyword;
+        private List<Exercise> _suggestions = new List<Exercise>();
+        public List<Exercise> exercisesList;
         public string Keyword
         {
             get { return _keyword; }
@@ -24,7 +25,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        private List<Exercise> _suggestions = new List<Exercise>();
         public List<Exercise> Suggestions
         {
             get { return _suggestions; }
@@ -35,8 +35,6 @@ namespace GymProgress.ViewModel
             }
         }
 
-        public List<Exercise> exercisesList;
-
         public ExerciseViewModel()
         {
             FirstLoad();
@@ -45,16 +43,15 @@ namespace GymProgress.ViewModel
         {
             exercisesList = await Database.GetAllExercisesAsync();
             Database.LoadSeedIfEmpty(exercisesList.Count);
-            exercisesList = await Database.GetAllExercisesAsync();
-            Suggestions = await Database.GetAllExercisesAsync();
+            UpdateListFromDatabase();
         }
+
         private async void UpdateListFromDatabase()
         {
-
             exercisesList = await Database.GetAllExercisesAsync();
             Suggestions = exercisesList.ToList();
         }
-        
+
         public Command SearchCommand
         {
             get
@@ -64,9 +61,9 @@ namespace GymProgress.ViewModel
         }
         public void Search()
         {
-            if (_keyword.Length> 0)
+            if (_keyword.Length > 0)
             {
-                  Suggestions = exercisesList.Where(c => c.Name.ToLower().Contains(_keyword.ToLower())).ToList();
+                Suggestions = exercisesList.Where(c => c.Name.ToLower().Contains(_keyword.ToLower())).ToList();
             }
             else
             {
@@ -82,28 +79,10 @@ namespace GymProgress.ViewModel
         }
         public void Add(string newExercise)
         {
-            //NEED validation
-            if (!IsAlreadyInList(newExercise) && newExercise.Length>=2)
-            {
-                Database.SaveExerciseAsync(new Exercise { Name = newExercise });
-                UpdateListFromDatabase();
-            }
-            else
-            {
-               
-            }
+            Database.SaveExerciseAsync(new Exercise { Name = newExercise });
+            UpdateListFromDatabase();
         }
-        public bool IsAlreadyInList(string newExercise)
-        {
-            foreach(Exercise exer in exercisesList)
-            {
-                if (exer.Name.ToLower().Equals(newExercise.ToLower()))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        
         public Command<Exercise> DeleteCommand
         {
             get
@@ -112,9 +91,9 @@ namespace GymProgress.ViewModel
             }
         }
 
-        public void Delete(Exercise exerToDelete)
+        public async void Delete(Exercise exerToDelete)
         {
-            Database.DeleteExerciseAsync(exerToDelete);
+            await Database.DeleteExerciseAsync(exerToDelete);
             UpdateListFromDatabase();
         }
     }

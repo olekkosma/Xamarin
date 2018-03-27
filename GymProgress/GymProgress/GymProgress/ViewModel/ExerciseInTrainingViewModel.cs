@@ -77,7 +77,6 @@ namespace GymProgress.ViewModel
 
         public void Add()
         {
-            //NEED validation
             ExerciseInTraining exer = new ExerciseInTraining { Series = Series, Repetition = Repetition, Weight = Weight, Exercisee = Exercise, Training = Training };
             Database.SaveExerciseInTrainingAsync(exer);
             Training.ExercisesInTraining.Add(exer);
