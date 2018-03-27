@@ -33,7 +33,8 @@ namespace GymProgress.View
 
         private async void AddExer_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddExericeView());
+            vm = BindingContext as TrainingViewModel;
+            await Navigation.PushAsync(new AddExericeView(vm.Training));
         }
 
         private async void DeleteExerInTraining_Clicked(object sender, TextChangedEventArgs e)
@@ -56,8 +57,8 @@ namespace GymProgress.View
 
         protected override void OnAppearing()
         {
-         //   var vm = BindingContext as TrainingViewModel;
-          //  vm.UpdateListFromDatabase();
+            var vm = BindingContext as TrainingViewModel;
+            vm.UpdateListFromDatabase();
         }
 
 

@@ -22,6 +22,17 @@ namespace GymProgress.ViewModel
             }
         }
 
+        private Training _training;
+        public Training Training
+        {
+            get { return _training; }
+            set
+            {
+                _training = value;
+                OnPropertyChanged();
+            }
+        }
+
         private int _series;
         public int Series
         {
@@ -69,7 +80,11 @@ namespace GymProgress.ViewModel
         public void Add()
         {
             //NEED validation
-            Database.SaveExerciseInTrainingAsync(new ExerciseInTraining { Series=Series,Repetition=Repetition,Weight=Weight,Exercisee=Exercise});
+            ExerciseInTraining exer = new ExerciseInTraining { Series = Series, Repetition = Repetition, Weight = Weight, Exercisee = Exercise, Training = Training };
+          
+            Database.SaveExerciseInTrainingAsync(exer);
+            Training.ExercisesInTraining.Add(exer);
+            Database.SaveTrainingAsync(Training);
         }
     }
 }

@@ -94,8 +94,9 @@ namespace GymProgress.ViewModel
             if (_training == null)
             {
                 //NEED validation
-                Database.SaveTrainingAsync(new Training { Description = Descritpion, Date = Date, ExercisesInTraining = Exercises });
-
+                _training = new Training { Description = Descritpion, Date = Date, ExercisesInTraining = Exercises };
+                Database.SaveTrainingAsync(_training);
+                setId();
             }
             else
             {
@@ -106,11 +107,16 @@ namespace GymProgress.ViewModel
             }
                 UpdateListFromDatabase();
         }
-        
+
+        public async void setId()
+        {
+
+            _training.Id = await Database.GetLastIdAsync();
+        }
         public async void UpdateListFromDatabase()
         {
-            //_training.Id = await Database.GetLastIdAsync();
-            Exercises = await Database.GetAllExercisesInCurrentTrainingAsync(await Database.GetLastIdAsync());
+            
+            Exercises = await Database.GetAllExercisesInCurrentTrainingAsync(_training.Id);
         }
 
         public Command<ExerciseInTraining> DeleteCommand

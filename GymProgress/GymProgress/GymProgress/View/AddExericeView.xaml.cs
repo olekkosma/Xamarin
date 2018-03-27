@@ -18,6 +18,13 @@ namespace GymProgress.View
 		{
 			InitializeComponent ();
 		}
+
+        public AddExericeView(Training training)
+        {
+            InitializeComponent();
+            var vm = BindingContext as ExerciseInTrainingViewModel;
+            vm.Training = training;
+        }
         public AddExericeView(Exercise exer)
         {
             InitializeComponent();
