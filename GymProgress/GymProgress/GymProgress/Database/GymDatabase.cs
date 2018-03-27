@@ -72,9 +72,19 @@ namespace GymProgress.Database
         {
             return database.GetAllWithChildrenAsync<Training>();
         }
+
+         public async Task<int> GetLastIdAsync()
+        {
+            return await database.ExecuteScalarAsync<int>("select last_insert_rowid()");
+        }
         public Task<List<ExerciseInTraining>> GetAllExercisesInTrainingAsync()
         {
             return database.GetAllWithChildrenAsync<ExerciseInTraining>();
+        }
+
+        public async Task<List<ExerciseInTraining>> GetAllExercisesInCurrentTrainingAsync(int id)
+        {
+            return await database.GetAllWithChildrenAsync<ExerciseInTraining>(c => c.TrainingId == id);
         }
 
         public Task<List<Exercise>> GetAllExercisesAsync()

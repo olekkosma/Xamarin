@@ -24,7 +24,6 @@ namespace GymProgress.ViewModel
                 Date = value.Date;
                 UpdateList(value);
                 Exercises = value.ExercisesInTraining;
-                //Exercises = new List<ExerciseInTraining>();
                 OnPropertyChanged();
             }
         }
@@ -72,12 +71,17 @@ namespace GymProgress.ViewModel
 
         public TrainingViewModel()
         {
-                //UpdateListFromDatabase();
-                Descritpion = "- no desc -";
-                Date = DateTime.Now;
-            Exercises = new List<ExerciseInTraining>();
+            
         }
 
+        public void initNewTraining()
+        {
+            Descritpion = "- no desc -";
+            Date = DateTime.Now;
+            Exercises = new List<ExerciseInTraining>();
+            Add();
+
+        }
         public Command AddCommand
         {
             get
@@ -91,6 +95,7 @@ namespace GymProgress.ViewModel
             {
                 //NEED validation
                 Database.SaveTrainingAsync(new Training { Description = Descritpion, Date = Date, ExercisesInTraining = Exercises });
+
             }
             else
             {
@@ -104,7 +109,8 @@ namespace GymProgress.ViewModel
         
         public async void UpdateListFromDatabase()
         {
-            Exercises = await Database.GetAllExercisesInTrainingAsync();
+            //_training.Id = await Database.GetLastIdAsync();
+            Exercises = await Database.GetAllExercisesInCurrentTrainingAsync(await Database.GetLastIdAsync());
         }
 
         public Command<ExerciseInTraining> DeleteCommand

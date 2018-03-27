@@ -19,6 +19,8 @@ namespace GymProgress.View
         public TrainingView()
         {
             InitializeComponent();
+            vm = BindingContext as TrainingViewModel;
+            vm.initNewTraining();
         }
 
         public TrainingView(Training training)
@@ -26,6 +28,7 @@ namespace GymProgress.View
             InitializeComponent();
             vm = BindingContext as TrainingViewModel;
             vm.Training = training;
+            
         }
 
         private async void AddExer_Clicked(object sender, EventArgs e)

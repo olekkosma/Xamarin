@@ -35,7 +35,7 @@ namespace GymProgress.View
         {
             var vm = BindingContext as ExerciseInTrainingViewModel;
             vm.AddCommand.Execute(null);
-            Navigation.PopAsync(); ;
+            Navigation.PopAsync();
         }
 
     }
