@@ -43,7 +43,7 @@ namespace GymProgress.View
         {
             var vm = BindingContext as TrainingListViewModel;
             vm.UpdateListFromDatabase();
-            vm.UpdateList();
+            vm.UpdateChildrenForTraining();
         }
     }
 }

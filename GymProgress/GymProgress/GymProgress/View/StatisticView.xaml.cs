@@ -15,10 +15,11 @@ namespace GymProgress.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StatisticView : ContentPage
     {
+        TrainingListViewModel vm;
         private List<Entry> entries = new List<Entry>();
         public void loadTrainings()
         {
-            var vm = new TrainingListViewModel();
+            vm = BindingContext as TrainingListViewModel;
             var trainings = vm.Trainings;
             List<Training> trainingsSorted = trainings.OrderBy(o => o.Date).ToList();
             Random random = new Random();

@@ -11,8 +11,10 @@ namespace GymProgress.ViewModel
         private List<Training> _trainings = new List<Training>();
         public List<Training> Trainings
         {
-            get {
-                return _trainings; }
+            get
+            {
+                return _trainings;
+            }
             set
             {
                 _trainings = value;
@@ -23,10 +25,10 @@ namespace GymProgress.ViewModel
         public TrainingListViewModel()
         {
             UpdateListFromDatabase();
-            UpdateList();
+            UpdateChildrenForTraining();
         }
 
-        public async void UpdateList()
+        public async void UpdateChildrenForTraining()
         {
             _trainings = await Database.GetAllTrainingsAsync();
             foreach (Training training in _trainings)
@@ -56,7 +58,7 @@ namespace GymProgress.ViewModel
         {
             bool loadTwice = false;
             Trainings = await Database.GetAllTrainingsAsync();
-            foreach(Training training in Trainings)
+            foreach (Training training in Trainings)
             {
                 if (training.ExercisesInTraining.Count < 1)
                 {
@@ -64,7 +66,7 @@ namespace GymProgress.ViewModel
                     Delete(training);
                 }
             }
-            if(loadTwice) Trainings = await Database.GetAllTrainingsAsync();
+            if (loadTwice) Trainings = await Database.GetAllTrainingsAsync();
         }
     }
 }

@@ -11,7 +11,7 @@
         <StackLayout>
             <StackLayout  HorizontalOptions="FillAndExpand" >
                 <Button BackgroundColor="#1976d2" Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-                <Label x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Label  x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                 <Label Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
                        FontSize="25" FontAttributes="Bold"  TextColor="#ffffff"/>
             </StackLayout>
@@ -28,7 +28,6 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-
 
                 <Label x:Name="SeriesErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15"/>
                 <Label Text="Series:" Grid.Row="1" Grid.Column="0" FontSize="20" TextColor="Black"/>
