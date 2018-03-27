@@ -17,6 +17,10 @@ namespace GymProgress.View
 	{
         bool IsComingFromTrainingSession = false;
         ExerciseInTrainingViewModel Vm;
+        private double width;
+        private double height;
+
+
         public ExerciseView ()
 		{
 			InitializeComponent ();
@@ -26,34 +30,6 @@ namespace GymProgress.View
             InitializeComponent();
             IsComingFromTrainingSession = value;
             Vm = vm;
-
-        }
-        private double width;
-        private double height;
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-            if (width != this.width || height != this.height)
-            {
-                this.width = width;
-                this.height = height;
-                if (width > height)
-                {
-                    mainRowGrid.RowDefinitions.Clear();
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(14, GridUnitType.Star)});
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(16, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Star) });
-
-                }
-                else
-                {
-                    mainRowGrid.RowDefinitions.Clear();
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
-                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(84, GridUnitType.Star) });
-                }
-            }
         }
 
         private void SearchBar_OnTextChanged(object sender,TextChangedEventArgs e)
@@ -71,7 +47,6 @@ namespace GymProgress.View
                 Vm.Exercise = exer;
                 Navigation.PopAsync();
             }
-            
         }
 
         private async void DeleteButton_Clicked(object sender, TextChangedEventArgs e)
@@ -83,6 +58,29 @@ namespace GymProgress.View
                 var exer = button.BindingContext as Exercise;
                 var vm = BindingContext as ExerciseViewModel;
                 vm.DeleteCommand.Execute(exer);
+            }
+        }
+        protected override void OnSizeAllocated(double width, double height)  // when screen is rotated, no acces via xaml
+        {
+            base.OnSizeAllocated(width, height);
+            if (width != this.width || height != this.height)
+            {
+                this.width = width;
+                this.height = height;
+                if (width > height)
+                {
+                    mainRowGrid.RowDefinitions.Clear();
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(14, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(16, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(70, GridUnitType.Star) });
+                }
+                else
+                {
+                    mainRowGrid.RowDefinitions.Clear();
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(8, GridUnitType.Star) });
+                    mainRowGrid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(84, GridUnitType.Star) });
+                }
             }
         }
     }

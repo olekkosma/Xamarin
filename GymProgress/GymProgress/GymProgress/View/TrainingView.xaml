@@ -40,7 +40,7 @@
                                             <ColumnDefinition Width="90*" />
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding MyText}" FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
+                                        <Label Text="{Binding ExerInTrainingExtended}" FontSize="16" HorizontalOptions="Center" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Grid.Column="0" Grid.Row="0"/>
                                         <Button Text="-" Grid.Column="1" Grid.Row="0" Clicked="DeleteExerInTraining_Clicked"/>
                                     </Grid>
                                 </StackLayout>

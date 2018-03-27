@@ -23,7 +23,7 @@ namespace GymProgress.Model
         [ManyToOne(CascadeOperations = CascadeOperation.CascadeRead)]
         public Training Training { get; set; }
 
-        public string Print()
+        public string PrintExerInTraining()
         {
             //return string.Format("{0} TrainingID: {1} ownId: {2} \n Series: {3}  Repetition: {4}  Weight: {5}", this.Exercisee.Name,this.TrainingId,this.Id, this.Series, this.Repetition, this.Weight);
             if (this.Exercisee != null)
@@ -35,9 +35,9 @@ namespace GymProgress.Model
                 return "";
             }
         }
-        public string MyText
+        public string ExerInTrainingExtended
         {
-            get { return Print(); }
+            get { return PrintExerInTraining(); }
         }
     }
 }

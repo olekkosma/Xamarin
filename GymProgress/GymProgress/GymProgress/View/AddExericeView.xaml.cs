@@ -11,13 +11,13 @@ using Xamarin.Forms.Xaml;
 
 namespace GymProgress.View
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class AddExericeView : ContentPage
-	{
-		public AddExericeView ()
-		{
-			InitializeComponent ();
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AddExericeView : ContentPage
+    {
+        public AddExericeView()
+        {
+            InitializeComponent();
+        }
 
         public AddExericeView(Training training)
         {

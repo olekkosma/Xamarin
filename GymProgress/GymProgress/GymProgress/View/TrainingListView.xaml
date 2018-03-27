@@ -23,9 +23,8 @@
                                         <ColumnDefinition Width="10*"/>
                                     </Grid.ColumnDefinitions>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                                        <Label Text="{Binding ExercisesInTraining.Count}" Grid.Column="0" Grid.Row="0"/>
-                                        <Label Text="{Binding Description}" Grid.Column="0" Grid.Row="0"/>
-                                        <Label Text="{Binding Date, StringFormat='{0:d MMMM yyyy}'}" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Start" HorizontalTextAlignment="End"
+                                        <Label Text="{Binding DescExtended}" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start"  VerticalTextAlignment="Center"/>
+                                        <Label Text="{Binding Date, StringFormat='{0:d MMMM yyyy}'}" FontSize="20" HorizontalOptions="EndAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="End"
                                                Grid.Column="0" Grid.Row="0"/>
                                     </StackLayout>
                             <Button Text="-" Grid.Column="1" Grid.Row="0"

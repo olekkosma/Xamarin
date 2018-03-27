@@ -9,13 +9,12 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout>
-                <Label Text="ADD exercise to training"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                <Button Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                <Label Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                       FontSize="21" FontAttributes="Bold" />
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -24,17 +23,16 @@
                     <ColumnDefinition Width="30*" />
                     <ColumnDefinition Width="70*"/>
                 </Grid.ColumnDefinitions>
-                <Button Text="Select exercise" Grid.Row="0" Grid.Column="0" Clicked="SelectExercise_Clicked"/>
-                <Entry Text="{Binding Exercise.Name}" Grid.Row="0" Grid.Column="1"/>
-                <Label Text="Series" Grid.Row="1" Grid.Column="0"/>
-                <Entry Text="{Binding Series}" Grid.Row="1" Grid.Column="1"/>
-                <Label Text="Repetition" Grid.Row="2" Grid.Column="0"/>
-                <Entry Text="{Binding Repetition}" Grid.Row="2" Grid.Column="1"/>
-                <Label Text="Weight" Grid.Row="3" Grid.Column="0"/>
-                <Entry Text="{Binding Weight}"  Grid.Row="3" Grid.Column="1"/>
+
+                <Label Text="Series" Grid.Row="2" Grid.Column="0"/>
+                <Entry Text="{Binding Series}" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="Repetition" Grid.Row="3" Grid.Column="0"/>
+                <Entry Text="{Binding Repetition}" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="Weight" Grid.Row="4" Grid.Column="0"/>
+                <Entry Text="{Binding Weight}"  Grid.Row="4" Grid.Column="1"/>
             </Grid>
             <StackLayout>
-                <Button Text="add exercise" Clicked="AddExerciseInTraining_Clicked" />
+                <Button Text="Add exercise" Clicked="AddExerciseInTraining_Clicked" />
             </StackLayout>
 
         </StackLayout>
