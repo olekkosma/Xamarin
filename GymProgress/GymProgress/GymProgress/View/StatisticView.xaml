@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-            <forms:ChartView x:Name="Chart1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+            <forms:ChartView x:Name="Chart1" BackgroundColor="Aqua"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

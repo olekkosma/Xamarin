@@ -15,9 +15,9 @@ namespace GymProgress.Database
         public GymDatabase()
         {
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
-            database.DropTableAsync<Training>();
-            database.DropTableAsync<ExerciseInTraining>();
-            database.DropTableAsync<Exercise>();
+            //database.DropTableAsync<Training>();
+            //database.DropTableAsync<ExerciseInTraining>();
+            //database.DropTableAsync<Exercise>();
             database.CreateTableAsync<Exercise>();
             database.CreateTableAsync<ExerciseInTraining>();
             database.CreateTableAsync<Training>();
