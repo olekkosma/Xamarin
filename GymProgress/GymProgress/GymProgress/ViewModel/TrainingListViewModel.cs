@@ -27,6 +27,8 @@ namespace GymProgress.ViewModel
 
         public async void UpdateList()
         {
+            //UpdateListFromDatabase();
+            _trainings = await Database.GetAllTrainingsAsync();
             foreach (Training training in _trainings)
             {
                 foreach (ExerciseInTraining exerInTraining in training.ExercisesInTraining)
@@ -52,7 +54,18 @@ namespace GymProgress.ViewModel
 
         public async void UpdateListFromDatabase()
         {
+            bool loadTwice = false;
             Trainings = await Database.GetAllTrainingsAsync();
+            foreach(Training training in Trainings)
+            {
+                if (training.ExercisesInTraining.Count < 1)
+                {
+                    loadTwice = true;
+                    Delete(training);
+                }
+            }
+            if(loadTwice) Trainings = await Database.GetAllTrainingsAsync();
+            
         }
     }
 }

@@ -38,5 +38,12 @@ namespace GymProgress.View
             Navigation.PushAsync(new TrainingView(training));
 
         }
+
+        protected override void OnAppearing()
+        {
+            var vm = BindingContext as TrainingListViewModel;
+            vm.UpdateListFromDatabase();
+            vm.UpdateList();
+        }
     }
 }

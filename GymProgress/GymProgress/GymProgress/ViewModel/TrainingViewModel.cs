@@ -20,6 +20,7 @@ namespace GymProgress.ViewModel
             set
             {
                 _training = value;
+                //_training.Id = value.Id;
                 Descritpion = value.Description;
                 Date = value.Date;
                 UpdateList(value);

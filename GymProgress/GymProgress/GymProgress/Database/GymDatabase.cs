@@ -15,9 +15,9 @@ namespace GymProgress.Database
         public GymDatabase()
         {
             database = DependencyService.Get<ISQLiteHelper>().GetConnection();
-            database.DropTableAsync<Training>();
-            database.DropTableAsync<ExerciseInTraining>();
-            database.DropTableAsync<Exercise>();
+            //database.DropTableAsync<Training>();
+            //database.DropTableAsync<ExerciseInTraining>();
+            //database.DropTableAsync<Exercise>();
             database.CreateTableAsync<Exercise>();
             database.CreateTableAsync<ExerciseInTraining>();
             database.CreateTableAsync<Training>();
@@ -68,9 +68,9 @@ namespace GymProgress.Database
         {
             return await database.GetWithChildrenAsync<Exercise>(id);
         }
-        public Task<List<Training>> GetAllTrainingsAsync()
+        public  Task<List<Training>> GetAllTrainingsAsync()
         {
-            return database.GetAllWithChildrenAsync<Training>();
+            return  database.GetAllWithChildrenAsync<Training>();
         }
 
          public async Task<int> GetLastIdAsync()

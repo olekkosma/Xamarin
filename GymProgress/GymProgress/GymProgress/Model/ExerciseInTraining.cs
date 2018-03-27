@@ -25,7 +25,15 @@ namespace GymProgress.Model
 
         public   string Print()
         {
-            return string.Format("{0} TrainingID: {1} ownId: {2} \n Series: {3}  Repetition: {4}  Weight: {5}", this.Exercisee.Name,this.TrainingId,this.Id, this.Series, this.Repetition, this.Weight);
+            //return string.Format("{0} TrainingID: {1} ownId: {2} \n Series: {3}  Repetition: {4}  Weight: {5}", this.Exercisee.Name,this.TrainingId,this.Id, this.Series, this.Repetition, this.Weight);
+            if (this.Exercisee != null)
+            {
+                return string.Format("{0} \n Series: {1}  Repetition: {2}  Weight: {3}", this.Exercisee.Name, this.Series, this.Repetition, this.Weight);
+            }
+            else
+            {
+                return "";
+            }
         }
         public string MyText
         {
