@@ -22,7 +22,6 @@ namespace GymProgress.Database
             database.CreateTableAsync<ExerciseInTraining>();
             database.CreateTableAsync<Training>();
         }
-
         public void Seed()
         {
             Exercise exer = new Exercise { Name = "Testowane cwiczenie" };
@@ -34,7 +33,6 @@ namespace GymProgress.Database
             database.InsertAsync(exerInTrain);
             database.InsertAsync(exerInTrain2);
             exer.ExerInTraining = new List<ExerciseInTraining> { exerInTrain };
-
             exer2.ExerInTraining = new List<ExerciseInTraining> { exerInTrain2 };
             database.UpdateWithChildrenAsync(exer);
             database.UpdateWithChildrenAsync(exer2);
@@ -44,13 +42,12 @@ namespace GymProgress.Database
                 Date = new DateTime(2017, 11, 12),
             };
             database.InsertAsync(training);
-            training.ExercisesInTraining = new List<ExerciseInTraining> { exerInTrain,exerInTrain2 };
+            training.ExercisesInTraining = new List<ExerciseInTraining> { exerInTrain, exerInTrain2 };
             exerInTrain.Training = training;
             exerInTrain2.Training = training;
             database.UpdateWithChildrenAsync(training);
             database.UpdateWithChildrenAsync(exerInTrain);
             database.UpdateWithChildrenAsync(exerInTrain2);
-
             database.InsertAsync(new Exercise { Name = "Push up" });
             database.InsertAsync(new Exercise { Name = "Pull up" });
             database.InsertAsync(new Exercise { Name = "Inverted row" });
@@ -62,18 +59,16 @@ namespace GymProgress.Database
                 Seed();
             }
         }
-
-
         public async Task<Exercise> GetExerForExerInTrainingAsync(int id)
         {
             return await database.GetWithChildrenAsync<Exercise>(id);
         }
-        public  Task<List<Training>> GetAllTrainingsAsync()
+        public Task<List<Training>> GetAllTrainingsAsync()
         {
-            return  database.GetAllWithChildrenAsync<Training>();
+            return database.GetAllWithChildrenAsync<Training>();
         }
 
-         public async Task<int> GetLastIdAsync()
+        public async Task<int> GetLastIdAsync()
         {
             return await database.ExecuteScalarAsync<int>("select last_insert_rowid()");
         }
@@ -132,11 +127,11 @@ namespace GymProgress.Database
         }
 
 
-        public void DeletellExercises(List<Exercise> tmp)
+        public async void DeletellExercises(List<Exercise> tmp)
         {
             foreach (Exercise exer in tmp)
             {
-                DeleteExerciseAsync(exer);
+                await DeleteExerciseAsync(exer);
             }
         }
 
@@ -159,7 +154,5 @@ namespace GymProgress.Database
                 return database.InsertWithChildrenAsync(training);
             }
         }
-
-
     }
 }

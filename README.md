@@ -35,3 +35,5 @@ More details in documentation >> pdf
 * -By przekazaæ wartoœæ z jednego viewmodelu Do drugiego, przesy³am w konstruktorze syna, jako parametr viewModel ojca. W metodzie syna przypisuje odpowiedni¹ wartoœæviewmodelu ojca  
   
 * -chcê korzystaæ z Command i bandingowania go, ale wiekszoœæ akcji powoduje zmiane aktualnego view, tzn Pop, albo Push. Nie jestem wstanie teg ozrobiæ z poziomu ModelView. muszê delegowaæ najpierw z Widoku, a z widoku Command w ViewModel  
+
+* -UWP w momencie tworzenia nowego treningu, pomimo faktu ze lista z cwiczeniami jest pusta, ma on problem z nieistniej¹cym jeszcze objektem exercise w metodzie wysiwetlania informacji(toString). Android niem a tego problemu
