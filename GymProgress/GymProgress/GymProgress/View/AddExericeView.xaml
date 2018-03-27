@@ -11,17 +11,17 @@
         <StackLayout>
             <StackLayout  HorizontalOptions="FillAndExpand" >
                 <Button BackgroundColor="#1976d2" Text="Select exercise" Clicked="SelectExercise_Clicked" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"/>
-                <Label  x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                <Label Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                <Label  x:Name="ExerciseErrorLabel" Text="" Grid.Row="0" Grid.Column="1" TextColor="Red" FontSize="15" HorizontalOptions="CenterAndExpand" />
+                <Label x:Name="ExerNameLabel" Text="{Binding Exercise.Name}" HorizontalOptions="CenterAndExpand" 
                        FontSize="25" FontAttributes="Bold"  TextColor="#ffffff"/>
             </StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>

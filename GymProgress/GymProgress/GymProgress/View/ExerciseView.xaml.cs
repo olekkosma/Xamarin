@@ -19,8 +19,6 @@ namespace GymProgress.View
         ExerciseInTrainingViewModel Vm;
         private double width;
         private double height;
-
-
         public ExerciseView ()
 		{
 			InitializeComponent ();
