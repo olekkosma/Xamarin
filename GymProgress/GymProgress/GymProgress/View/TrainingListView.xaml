@@ -13,11 +13,12 @@
                 VerticalOptions="Start" 
                 HorizontalOptions="CenterAndExpand" Grid.Column="0" Grid.Row="0" FontSize="35" FontAttributes="Bold"/>
 
-            <ListView x:Name="TrainingListListView" ItemsSource="{Binding Trainings}" ItemTapped="EditTraining_Clicked" >
+            <ListView x:Name="TrainingListListView" ItemsSource="{Binding Trainings}" ItemTapped="EditTraining_Clicked" 
+                     HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" BackgroundColor="#eeeeee" Margin="2,5,2,5">
                                 <Grid HorizontalOptions="FillAndExpand" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="90*" />

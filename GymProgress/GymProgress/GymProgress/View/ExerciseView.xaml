@@ -36,20 +36,20 @@
                         TextColor="White"  Clicked="AddButton_Clicked"/>
                     </Grid>
                 </StackLayout>
-                <ListView x:Name="ExercisesListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  BackgroundColor="#ffffff"
-                      ItemsSource="{Binding Suggestions}" Grid.Column="0" Grid.Row="2" ItemTapped="ExerciseChoossed_Clicked" Margin="10">
+                <ListView x:Name="ExercisesListView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  HasUnevenRows="True"
+                      ItemsSource="{Binding Suggestions}" Grid.Column="0" Grid.Row="2" ItemTapped="ExerciseChoossed_Clicked" 
+                          SeparatorVisibility="None">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell >
-                                <StackLayout Orientation="Horizontal"  BackgroundColor="#ebebeb"  Spacing="10" VerticalOptions="FillAndExpand"
-                                            HorizontalOptions="FillAndExpand" >
-                                    <Grid HorizontalOptions="FillAndExpand" >
+                                <StackLayout BackgroundColor="#eeeeee" Margin="2,5,2,5">
+                                    <Grid >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="90*" />
                                             <ColumnDefinition Width="10*"/>
                                         </Grid.ColumnDefinitions>
-                                        <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0" />
-                                        <Button Text="-" Grid.Column="1" Grid.Row="0"
+                                        <Label Text="{Binding Name}" Grid.Column="0" Grid.Row="0" VerticalOptions="Center"/>
+                                        <Button Text="-" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" HorizontalOptions="Center"
                                             Clicked="DeleteButton_Clicked" BackgroundColor="#FF5522"/>
                                     </Grid>
                                 </StackLayout>
