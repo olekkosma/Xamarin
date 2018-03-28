@@ -1,13 +1,16 @@
 ﻿using GymProgress.Model;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xamarin.Forms;
-
+using Entry = Microcharts.Entry;
 namespace GymProgress.ViewModel
 {
     class TrainingListViewModel : BasicViewModel
     {
+        public static List<Entry> entries = new List<Entry>();
         private List<Training> _trainings = new List<Training>();
         public List<Training> Trainings
         {
@@ -37,6 +40,23 @@ namespace GymProgress.ViewModel
                 {
                     exerInTraining.Exercisee = await Database.GetExerForExerInTrainingAsync(exerInTraining.ExerciseId);
                 }
+            }
+            FillEntriesWithData();
+        }
+        public void FillEntriesWithData()
+        {
+            entries = new List<Entry>();
+            List<Training> trainingsSorted = _trainings.OrderBy(o => o.Date).ToList();
+            Random random = new Random();
+            foreach (Training training in trainingsSorted)
+            {
+                int sum = 0;
+                foreach (ExerciseInTraining exerInTraining in training.ExercisesInTraining)
+                {
+                    sum += exerInTraining.Repetition * exerInTraining.Series * exerInTraining.Weight;
+                }
+                var color = String.Format("#{0:X6}", random.Next(0x1000000));
+                entries.Add(new Entry(sum) { ValueLabel = sum.ToString(), Label = training.Date.ToString("yyy-MM-dd"), Color = SKColor.Parse(color) });
             }
         }
 
