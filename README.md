@@ -1,15 +1,12 @@
 # Xamarin
-![logo](https://user-images.githubusercontent.com/16398511/39098720-4d79a9b8-466f-11e8-824d-aaf516f2398f.jpg)
 
-
-Xamarin project for study classes
-Nazwa: Gym Progress  
+Xamarin project for study classes  
+Nazwa: **Gym Progress**  
 
 Aplikacja na systemy Android i UWP. S³u¿y ona do kontrolowania treningów i progressu na si³owni. Aplikacja umo¿liwia dodawanie treningów, æwiczeñ.
 Dodatkowo mo¿na wyœwietliæ podsumowanie treningów w formie wykresu.  
 
-![xamarin_view](https://user-images.githubusercontent.com/16398511/39098728-6e8532bc-466f-11e8-924e-fc824a80eca6.png)
-
+<img src="https://user-images.githubusercontent.com/16398511/39098728-6e8532bc-466f-11e8-924e-fc824a80eca6.png" width="300">
 
 **TODO:**
 -~~dependency service do UWP~~  
